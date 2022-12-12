@@ -20,6 +20,7 @@ html {
 .footer-list li {
     font-size: 0.8em;
     color: rgb(75, 75, 75);
+    margin-bottom: 4px;
 }
 
 .footer-logo {
@@ -27,7 +28,7 @@ html {
     width: 120px;
 }
 
-.footer-icon{
+.footer-icon {
     font-size: 3em;
 }
 

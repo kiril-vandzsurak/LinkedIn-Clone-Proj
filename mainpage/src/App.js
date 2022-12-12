@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <Container fluid className="main-con">
-      <Row>
+      <Row className="justify-space-between">
         <Col md={6}></Col>
         <Col md={4}></Col>
       </Row>
