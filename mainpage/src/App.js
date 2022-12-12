@@ -1,9 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
-import { retrieveDataAction } from "./components/redux/actions";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import Sidebar2 from "./components/Sidebar2";
+
 function App() {
 
   return (
@@ -13,8 +12,11 @@ function App() {
           <Container className="placeholder"></Container>
         </Col>
         <Col md={2}>
-          <Container className="placeholder">
+          <Container className="placeholder2">
             <Sidebar />
+          </Container>
+          <Container className="placeholder3 mt-3">
+            <Sidebar2 />
           </Container>
         </Col>
       </Row>

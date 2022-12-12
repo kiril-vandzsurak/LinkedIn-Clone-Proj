@@ -50,6 +50,20 @@ html {
     min-height: 800px;
 }
 
+.placeholder2 {
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    background-color: white;
+    height: fit-content;
+}
+
+.placeholder3 {
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    background-color: white;
+    height: fit-content;
+}
+
 .people-card {
     width: 100%;
     margin-bottom: 5px;

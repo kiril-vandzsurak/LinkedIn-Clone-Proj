@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import PeopleCards from "./PeopleCards";
-import { retrieveDataActionTop } from "./redux/actions";
+import { retrieveDataActionBottom} from "./redux/actions";
 
-const Sidebar = () => {
+const Sidebar2 = () => {
   // const [people, setPeople] = useState([]);
   const [show, setToShow] = useState(false);
   // const [random, setRandom] = useState([]);
   const dispatch = useDispatch();
-  const people = useSelector((state) => state.people.top)
+  const people = useSelector((state) => state.people.bottom)
 
   const endpoint = "https://striveschool-api.herokuapp.com/api/profile/";
   const headers = {
@@ -20,7 +20,7 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    dispatch(retrieveDataActionTop(endpoint, headers));
+    dispatch(retrieveDataActionBottom(endpoint, headers));
     setTimeout(() => {
       setToShow(true);
     }, 300);
@@ -49,7 +49,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <h4 className="mt-3">People also follow</h4>
+      <h4 className="mt-3">People you may know</h4>
       <ListGroup variant="flush" className="">
         {show && people.map((i)=> (
           <PeopleCards key={i._id} name={i.name} location={i.area} title={i.title} image={i.image}/>
@@ -59,4 +59,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Sidebar2;
