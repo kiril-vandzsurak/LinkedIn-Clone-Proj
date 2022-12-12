@@ -18,7 +18,7 @@ html {
 
 }
 
-.main-con-row{
+.main-con-row {
     margin-top: 200px;
     margin-bottom: 80px;
     justify-content: center;
@@ -43,11 +43,47 @@ html {
     font-size: 3em;
 }
 
-.footer-con {}
-
-.placeholder{
+.placeholder {
     border-radius: 10px;
     border: 1px solid darkgray;
     background-color: white;
-    height: 800px;
+    min-height: 800px;
+}
+
+.people-card {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+}
+
+#name-text {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.people-card span {
+    color: gray;
+    font-size: 0.7em;
+}
+
+.people-icon{
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    
+}
+
+#people-btn {
+    display: flex;
+    border-radius: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 110px;
+}
+
+#btn-icon{
+    color: white;
+    font-size: 1em;
+    margin-right: 2px;
 }
