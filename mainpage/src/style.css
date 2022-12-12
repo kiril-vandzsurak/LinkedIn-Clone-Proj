@@ -6,11 +6,22 @@
 
 html {
     min-height: 100vh;
+    min-width: 100%;
 }
 
 .main-con {
     min-height: 100vh;
+    min-width: 100%;
     background-color: rgb(226, 226, 226);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.main-con-row{
+    margin-top: 200px;
+    margin-bottom: 80px;
+    justify-content: center;
 }
 
 .footer-list {
@@ -33,3 +44,10 @@ html {
 }
 
 .footer-con {}
+
+.placeholder{
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    background-color: white;
+    height: 800px;
+}
