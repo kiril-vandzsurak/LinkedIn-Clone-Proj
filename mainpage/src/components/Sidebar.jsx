@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import PeopleCards from "./PeopleCards";
+import { retrieveDataAction } from "./redux/actions";
 
 const Sidebar = () => {
-  const [people, setPeople] = useState([]);
+  // const [people, setPeople] = useState([]);
   const [show, setToShow] = useState(false);
-  const [random, setRandom] = useState([])
+  // const [random, setRandom] = useState([]);
+  const dispatch = useDispatch();
+  const people = useSelector((state) => state.people.content)
 
   const endpoint = "https://striveschool-api.herokuapp.com/api/profile/";
   const headers = {
@@ -16,39 +19,39 @@ const Sidebar = () => {
     },
   };
 
-  const getRandom = (arr, num) => {
-    const shuffled = [...arr].sort(() => 0.5 - Math.random())
-    return shuffled.slice(0, num)
-  }
-
-  const retrieveData = async () => {
-    try {
-      let response = await fetch(endpoint, headers);
-      let fetchedData = await response.json();
-      if (response.ok) {
-        setPeople(getRandom(fetchedData, 6))
-      } else {
-        console.log("There was a problem fetching data");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-
-
   useEffect(() => {
-    retrieveData();
+    dispatch(retrieveDataAction(endpoint, headers));
     setTimeout(() => {
-      setToShow(true)
-    }, 500)
+      setToShow(true);
+    }, 300);
   }, []);
+
+  // const retrieveData = async () => {
+  //   try {
+  //     let response = await fetch(endpoint, headers);
+  //     let fetchedData = await response.json();
+  //     if (response.ok) {
+  //       setPeople(getRandom(fetchedData, 6))
+  //     } else {
+  //       console.log("There was a problem fetching data");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   retrieveData();
+  //   setTimeout(() => {
+  //     setToShow(true)
+  //   }, 500)
+  // }, []);
 
   return (
     <>
-    <h4 className="mt-3">People also follow</h4>
+      <h4 className="mt-3">People also follow</h4>
       <ListGroup variant="flush" className="">
-        {show && people.slice(0,7).map((i)=> (
+        {show && people.map((i)=> (
           <PeopleCards key={i._id} name={i.name} location={i.area} title={i.title} image={i.image}/>
         ))}
       </ListGroup>

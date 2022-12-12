@@ -9,7 +9,7 @@ function App() {
   return (
     <Container className="main-con">
       <Row className="main-con-row">
-        <Col md={7}>
+        <Col md={6}>
           <Container className="placeholder"></Container>
         </Col>
         <Col md={2}>
