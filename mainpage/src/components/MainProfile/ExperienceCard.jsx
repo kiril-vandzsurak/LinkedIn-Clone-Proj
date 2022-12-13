@@ -1,14 +1,29 @@
 import { Container, Card } from "react-bootstrap";
 
 const ExperienceCard = (props) => {
+  const startdate = props.data.startDate;
+  const enddate = props.data.endDate;
+
+  const formatDate = (d) => new Date(d).toISOString().substring(0, 10);
+
   return (
     <>
       <Container fluid>
         <Card>
           <Card.Body>
-            <h1>{props.data.role} at {props.data.company}</h1>
-            <h3></h3>
-            <h2>{props.data.area}</h2>
+            <p>
+              <span className="font-weight-bold" style={{ fontSize: "25px" }}>
+                {props.data.role}
+                <br />
+              </span>
+              <span style={{ fontSize: "18px" }}>{props.data.company}</span>
+              <br />
+              {formatDate(startdate)} -{" "}
+              {props.data.endDate ? formatDate(enddate) : "present"}
+              <br />
+              <hr />
+              <p>{props.data.description}</p>
+            </p>
           </Card.Body>
         </Card>
       </Container>

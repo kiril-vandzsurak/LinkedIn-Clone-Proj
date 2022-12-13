@@ -23,6 +23,12 @@ export default function Experience() {
   const user = useSelector((state) => state.profile.profilename);
   const userID = user._id;
   const experiences = useSelector((state) => state.profile.experience[0]);
+  useEffect(() => {
+    dispatch(getExperienceAction(userID));
+    setTimeout(() => {
+      setToShow(true);
+    }, 300);
+  }, [show], []);
 
   const [experience, setExperience] = useState({
     role: "",
@@ -53,10 +59,11 @@ export default function Experience() {
       );
       if (response.ok) {
         let fetchedData = await response.json();
-        setToShow(false)
-        setToShow(true)
         console.log(fetchedData);
-        return fetchedData
+        dispatch(() => {
+          getExperienceAction(userID)
+        })
+        return fetchedData;
       } else {
         console.log("Couldn't post");
       }
@@ -73,13 +80,7 @@ export default function Experience() {
     }, 300);
   };
 
-  useEffect(() => {
-    dispatch(getExperienceAction(userID));
-    setTimeout(() => {
-      setToShow(true);
-      console.log(experiences);
-    }, 300);
-  }, []);
+  
 
   const options = {
     method: "POST",
@@ -138,10 +139,12 @@ export default function Experience() {
           </Modal.Header>
           <Modal.Body>
             {/* role, company, startDate, endDate, description, area */}
-            <Form onSubmit={(e) => {
-              handleClose()
-              handleSubmit(e)
-            }}>
+            <Form
+              onSubmit={(e) => {
+                handleClose();
+                handleSubmit(e);
+              }}
+            >
               <Form.Group>
                 <Form.Label>What was your role?</Form.Label>
                 <Form.Control
