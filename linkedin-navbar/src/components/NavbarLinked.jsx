@@ -53,14 +53,18 @@ const NavbarLinked = () => {
       <Navbar bg="light" expand="lg" style={{ padding: "0px", height: "48px" }}>
         <Container>
           <BsLinkedin style={{ fontSize: "35px", color: "#0A66C2" }} />
-          <InputGroup className="ml-2" style={{ width: "350px" }}>
-            {/* <ImSearch /> */}
-            <Form.Control
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              placeholder="Search"
-            />
-            {/* <div className="dataResult">
+          <div className="d-flex flex-column">
+            <InputGroup
+              className="ml-2"
+              style={{ width: "350px", marginTop: "262px" }}
+            >
+              {/* <ImSearch /> */}
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="Search"
+              />
+              {/* <div className="dataResult">
               <ListGroup>
                 {profiles.map((elements) => (
                   <ListGroup.Item>
@@ -69,7 +73,34 @@ const NavbarLinked = () => {
                 ))}
               </ListGroup>
             </div> */}
-          </InputGroup>
+            </InputGroup>
+            <div
+              style={{
+                width: "480px",
+                height: "260px",
+                border: "1px solid black",
+                marginLeft: "10px",
+                borderRadius: "4px",
+                overflow: "auto",
+              }}
+              className="d-flex flex-column align-items-start"
+            >
+              <p style={{ marginLeft: "20px", marginTop: "10px" }}>
+                Try searching for
+              </p>
+              {profiles.map((elements) => (
+                <div
+                  style={{
+                    marginLeft: "20px",
+                    fontWeight: "bold",
+                  }}
+                  className="searchResult"
+                >
+                  {elements.name} {elements.surname}
+                </div>
+              ))}
+            </div>
+          </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">

@@ -1,0 +1,8 @@
+.searchResult {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.searchResult:hover {
+  background-color: bisque;
+}
