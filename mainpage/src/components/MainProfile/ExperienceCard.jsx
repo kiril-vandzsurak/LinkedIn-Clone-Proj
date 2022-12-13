@@ -26,9 +26,9 @@ const ExperienceCard = (props) => {
               {formatDate(startdate)} to{" "}
               {props.data.endDate ? formatDate(enddate) : "present"}
               <br />
-              <hr />
-              <p>{props.data.description}</p>
             </p>
+            <hr />
+            <p>{props.data.description}</p>
           </Card.Body>
           <Card.Footer>
             <Button
