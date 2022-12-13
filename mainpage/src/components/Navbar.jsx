@@ -16,26 +16,10 @@ import {
 } from "react-icons/ri";
 // import img from "./avatar-1.jpg";
 import { useEffect, useState } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const NavbarLinked = () => {
   const [profiles, setProfiles] = useState([]);
-
-  // const saveData = () => {
-  //     try {
-  //       const response = await fetch("https://striveschool.herokuapp.com/api/reservation", {
-  //         method: 'POST',
-  //         body: JSON.stringify(this.state.reservation),
-  //         headers: {
-  //           'Content-type': 'application/json'
-  //         }
-  //       })
-  //       if (response.ok) {
-  //         alert('data saved successfully')
-  //       }
-  //     } catch (e) {
-  //         console.log(e)
-  //     }
-  //   }
 
   useEffect(() => {
     saveData();
@@ -44,7 +28,7 @@ const NavbarLinked = () => {
   const headers = {
     headers: {
       Authorization:
-        "Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MDFiNGM5NmRmYjAwMTUyMWE1YzYiLCJpYXQiOjE2NzA4NDA3NTcsImV4cCI6MTY3MjA1MDM1N30.T5hB8KIIR6yohMzGajhbb-YdZ8l99w7-m-ASjfU4Jyc",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MDFiNGM5NmRmYjAwMTUyMWE1YzYiLCJpYXQiOjE2NzA4NDA3NTcsImV4cCI6MTY3MjA1MDM1N30.T5hB8KIIR6yohMzGajhbb-YdZ8l99w7-m-ASjfU4Jyc",
     },
   };
 
@@ -76,42 +60,51 @@ const NavbarLinked = () => {
               aria-describedby="inputGroup-sizing-default"
               placeholder="Search"
             />
+            {/* <div className="dataResult">
+              <ListGroup>
+                {profiles.map((elements) => (
+                  <ListGroup.Item>
+                    {elements.name} {elements.surname}
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            </div> */}
           </InputGroup>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="#home">
+              <Nav.Link href="#home" className="d-flex flex-column">
                 <div>
                   <AiFillHome style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>Home</div>
               </Nav.Link>
-              <Nav.Link href="#home">
+              <Nav.Link href="#myNetwork" className="d-flex flex-column">
                 <div>
                   <RiGroupFill style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>My Network</div>
               </Nav.Link>
-              <Nav.Link href="#home">
+              <Nav.Link href="#jobs" className="d-flex flex-column">
                 <div>
                   <BsFillBriefcaseFill style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>Jobs</div>
               </Nav.Link>
-              <Nav.Link href="#home">
+              <Nav.Link href="#messaging" className="d-flex flex-column">
                 <div>
                   <RiMessage2Fill style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>Messaging</div>
               </Nav.Link>
-              <Nav.Link href="#home">
+              <Nav.Link href="#notifications" className="d-flex flex-column">
                 <div>
                   <RiNotification3Fill style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>Notifications</div>
               </Nav.Link>
 
-              <div>
+              <div className="d-flex flex-column">
                 <img
                   src=""
                   alt="..."
@@ -121,6 +114,7 @@ const NavbarLinked = () => {
                     borderRadius: "50%",
                     marginTop: "11px",
                   }}
+                  className="align-self-center"
                 />
                 <NavDropdown
                   title="Me"

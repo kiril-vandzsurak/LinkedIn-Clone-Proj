@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import Sidebar2 from "./components/Sidebar2";
 import NavbarLinked from "./components/Navbar";
+import MainProfile from "./components/MainProfile/MainProfile";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Container className="main-con">
         <Row className="main-con-row">
           <Col md={6}>
-            <Container className="placeholder"></Container>
+              <MainProfile />
           </Col>
           <Col md={2}>
             <Container className="placeholder2">
