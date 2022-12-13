@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  /* height: 100vh; */
+}
+.section-profile {
+  width: 100%;
+}
+.top-side {
+  background-color: rgb(160, 179, 182);
+  height: 140px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.take-picture {
+  background-color: white;
+  border-radius: 50%;
+  height: 30px;
+  width: 35px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.take-picture-icon {
+  font-size: 1.3rem;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.profile-picture {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: -112px, 0px, 0px;
+}
+.profile-picture img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid white;
+}
+.profile-buttons {
+  display: flex;
+  gap: 15px;
+}
+.btn-1 {
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.btn-2 {
+  border-radius: 30px;
+  font-size: 1rem;
+  color: #0c66c2;
+  background-color: white;
+  font-weight: bold;
+  border-color: #0c66c2;
+}
+.btn-3 {
+  border-radius: 30px;
+  color: #5e5e5e;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: white;
+  border-color: #5e5e5e;
+}
+.btn-4 {
+  color: #5e5e5e;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #ebebeb;
+  border: none;
+}
+.profile-job-details {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+.open-to-work {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #e8e5df;
+  padding-inline: 10px;
+}
+.second-section-p {
+  gap: 5px;
+  display: flex;
+  align-items: center;
+}
+.add-sumary-section {
+  display: flex;
+  gap: 10px;
+}
+.profile-view-section {
+  display: flex;
+}
+.viewed-people {
+  display: flex;
+  gap: 10px;
+}
+.people-search {
+  display: flex;
+  gap: 10px;
+}
+.icon {
+  font-size: 1rem;
+}
+.resource-mode {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid black;
+}
+.resource-mode-2 {
+  display: flex;
+  gap: 5px;
+}
+.all-resource {
+  text-align: center;
+}
+h2 {
+  font-size: 20px;
+}
+.activity {
+  display: flex;
+  justify-content: space-between;
+}
+.experience-add {
+  display: flex;
+  gap: 10px;
+}
+.experience-note {
+  display: flex;
+}
+.experice-icon {
+  font-size: 2rem;
+}
+.skill-work {
+  border-bottom: 0.2px solid gray;
+}
+h3 {
+  font-size: 20px;
+}
+.interest {
+  display: flex;
+  flex-direction: column;
+}
+.interested-companies {
+  display: flex;
+  gap: 200px;
+}
+.companies-info {
+  display: flex;
+}
+.company-name-follower {
+  display: flex;
+  flex-direction: column;
+}
+.companies-info img {
+  width: 50px;
+  height: 60px;
+}
