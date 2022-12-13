@@ -12,7 +12,7 @@ function App() {
       <Container className="main-con">
         <Row className="main-con-row">
           <Col md={6}>
-              <MainProfile />
+            <MainProfile />
           </Col>
           <Col md={2}>
             <Container className="placeholder2">

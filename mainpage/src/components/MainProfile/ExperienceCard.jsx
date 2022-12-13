@@ -1,4 +1,4 @@
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Button } from "react-bootstrap";
 
 const ExperienceCard = (props) => {
   const startdate = props.data.startDate;
@@ -18,13 +18,16 @@ const ExperienceCard = (props) => {
               </span>
               <span style={{ fontSize: "18px" }}>{props.data.company}</span>
               <br />
-              {formatDate(startdate)} -{" "}
+              {formatDate(startdate)} to{" "}
               {props.data.endDate ? formatDate(enddate) : "present"}
               <br />
               <hr />
               <p>{props.data.description}</p>
             </p>
           </Card.Body>
+          <Card.Footer>
+            <Button variant="danger" onClick={() => {props.delete(props.data._id)}}>Remove</Button>
+          </Card.Footer>
         </Card>
       </Container>
     </>

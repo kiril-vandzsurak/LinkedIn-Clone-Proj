@@ -48,6 +48,26 @@ export default function Experience() {
 
   const handleClose = () => setModal(false);
   const handleShow = () => setModal(true);
+    
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(experience),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+    },
+  };
+
+  const dltOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+    },
+  };
 
   const sendDetails = async () => {
     try {
@@ -56,6 +76,25 @@ export default function Experience() {
           userID +
           "/experiences/",
         options
+      );
+      if (response.ok) {
+        let fetchedData = await response.json();
+        return fetchedData;
+      } else {
+        console.log("Couldn't delete");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteExp = async (k) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+          userID +
+          "/experiences/" + k ,
+        dltOptions
       );
       if (response.ok) {
         let fetchedData = await response.json();
@@ -80,17 +119,7 @@ export default function Experience() {
     }, 300);
   };
 
-  
 
-  const options = {
-    method: "POST",
-    body: JSON.stringify(experience),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
-    },
-  };
 
   return (
     <div className="wrapper-analytic mt-2">
@@ -116,7 +145,7 @@ export default function Experience() {
             <Container fluid>
               <ListGroup variant="flush">
                 {experiences &&
-                  experiences.map((i) => <ExperienceCard data={i} />)}
+                  experiences.map((i) => <ExperienceCard data={i} delete={deleteExp}/>)}
               </ListGroup>
               {/* <h2 className="mb-0">Junior Business Analyst</h2>
               <div>JAY DEE LOGISTICS LTD.FULL-TIME</div> */}
