@@ -21,7 +21,7 @@ const ExperienceCard = (props) => {
                 {props.data.role}
                 <br />
               </span>
-              <span style={{ fontSize: "18px" }}>{props.data.company}</span>
+              <span style={{ fontSize: "18px" }}>{props.data.company} | {props.data.area}</span>
               <br />
               {formatDate(startdate)} to{" "}
               {props.data.endDate ? formatDate(enddate) : "present"}
