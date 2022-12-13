@@ -45,7 +45,6 @@ function ModalComponent() {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-
     dispatch({
       type: EDIT_PROFILE,
       payload: {
@@ -58,11 +57,9 @@ function ModalComponent() {
         image: image,
       },
     });
-  };
-  useEffect(() => {
     dispatch(updateProfile(changeVaules));
     handleClose();
-  }, []);
+  };
 
   return (
     <>

@@ -42,10 +42,10 @@ export default function MainProfile() {
               </div>
               <div className="profile-name d-flex">
                 <div className="profile-details">
-                  <h1 className="mb-0">
-                    {profileDetails.name}''
+                  <h4 className="mb-0">
+                    {profileDetails.name}
                     {profileDetails.surname}
-                  </h1>
+                  </h4>
 
                   <p className="mb-0">{profileDetails.title}</p>
                   <p className="mb-0">Sytems & Networks</p>

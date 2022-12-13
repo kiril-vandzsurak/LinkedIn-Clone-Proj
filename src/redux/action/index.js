@@ -29,16 +29,18 @@ export const getProfile = () => {
     }
   };
 };
-const option = {
-  method: "PUT",
-  body: JSON.stringify(),
 
-  headers: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
-  },
-};
-export const updateProfile = () => {
+export const updateProfile = (changeVaules) => {
+  const option = {
+    method: "PUT",
+    body: JSON.stringify(changeVaules),
+
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+      "Content-Type": "application/json",
+    },
+  };
   return async (dispatch) => {
     try {
       let response = await fetch(
@@ -46,12 +48,7 @@ export const updateProfile = () => {
         option
       );
       if (response.ok) {
-        const editData = await response.json();
-        console.log(editData);
-        dispatch({
-          type: EDIT_PROFILE,
-          payload: editData,
-        });
+        console.log(response);
       } else {
         console.log("error");
       }
