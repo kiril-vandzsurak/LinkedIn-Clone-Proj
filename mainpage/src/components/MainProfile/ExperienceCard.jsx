@@ -1,8 +1,13 @@
 import { Container, Card, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteExperienceAction } from "../redux/actions";
 
 const ExperienceCard = (props) => {
   const startdate = props.data.startDate;
   const enddate = props.data.endDate;
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.profile.profilename);
+  const userID = user._id;
 
   const formatDate = (d) => new Date(d).toISOString().substring(0, 10);
 
@@ -26,7 +31,14 @@ const ExperienceCard = (props) => {
             </p>
           </Card.Body>
           <Card.Footer>
-            <Button variant="danger" onClick={() => {props.delete(props.data._id)}}>Remove</Button>
+            <Button
+              variant="danger"
+              onClick={() => {
+                dispatch(deleteExperienceAction(props.data._id, userID));
+              }}
+            >
+              Remove
+            </Button>
           </Card.Footer>
         </Card>
       </Container>

@@ -70,7 +70,7 @@ const options = {
   },
 };
 export const getProfile = () => {
-  return async (dispatch, getstate) => {
+  return async (dispatch, getState) => {
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/me",
@@ -98,7 +98,7 @@ export const getExperienceAction = (userid) => {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/" +
           userid +
-          "/experiences",
+          "/experiences/",
         options
       );
       if (response.ok) {
@@ -116,18 +116,17 @@ export const getExperienceAction = (userid) => {
   };
 };
 
-const optionsPost = {
-  method: "POST",
-  body: JSON.stringify(),
-  headers: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
-    "Content-Type": "application/json",
-  },
-};
-
-export const postExperienceAction = (data, userid) => {
-  return async (dispatch, getState) => {
+export const postExperienceAction = (experience, userid) => {
+  const optionsPost = {
+    method: "POST",
+    body: JSON.stringify(experience),
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+      "Content-Type": "application/json",
+    },
+  };
+  return async (dispatch) => {
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/" +
@@ -136,13 +135,40 @@ export const postExperienceAction = (data, userid) => {
         optionsPost
       );
       if (response.ok) {
-        let fetchedData = await response.json();
-        dispatch({
-          SET_EXPERIENCE_POST,
-          payload: data,
-        });
+        console.log("Added successfully");
+        dispatch(getExperienceAction(userid));
       } else {
         console.log("Couldn't post");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const deleteExperienceAction = (postid, userid) => {
+  const optionsDelete = {
+    method: "DELETE",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+      "Content-Type": "application/json",
+    },
+  };
+  return async (dispatch) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+          userid +
+          "/experiences/" +
+          postid,
+        optionsDelete
+      );
+      if (response.ok) {
+        console.log("Deleted successfully!");
+        dispatch(getExperienceAction(userid));
+      } else {
+        console.log("Could not delete");
       }
     } catch (err) {
       console.log(err);

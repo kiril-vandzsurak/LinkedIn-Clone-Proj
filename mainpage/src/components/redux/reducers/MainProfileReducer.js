@@ -17,13 +17,13 @@ const profileReducer = (state = initialstate, action) => {
     case GET_EXPERIENCE_DETAILS:
       return {
         ...state,
-        experience: [...state.experience, action.payload],
+        experience: action.payload,
       };
     case SET_EXPERIENCE_POST:
-      return{
+      return {
         ...state,
-        toPost: [...state.toPost, action]
-      }
+        toPost: [...state.toPost, action.payload],
+      };
 
     default:
       return state;

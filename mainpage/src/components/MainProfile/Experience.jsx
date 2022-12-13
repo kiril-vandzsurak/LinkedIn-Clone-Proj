@@ -22,13 +22,16 @@ export default function Experience() {
   const [showModal, setModal] = useState(false);
   const user = useSelector((state) => state.profile.profilename);
   const userID = user._id;
-  const experiences = useSelector((state) => state.profile.experience[0]);
+  const experiences = useSelector((state) => state.profile.experience);
+
   useEffect(() => {
-    dispatch(getExperienceAction(userID));
+    if (userID){
+      dispatch(getExperienceAction(userID))
+    }
     setTimeout(() => {
       setToShow(true);
     }, 300);
-  }, [show], []);
+  }, [userID]);
 
   const [experience, setExperience] = useState({
     role: "",
@@ -48,78 +51,73 @@ export default function Experience() {
 
   const handleClose = () => setModal(false);
   const handleShow = () => setModal(true);
-    
 
-  const options = {
-    method: "POST",
-    body: JSON.stringify(experience),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
-    },
-  };
+  // const options = {
+  //   method: "POST",
+  //   body: JSON.stringify(experience),
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization:
+  //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+  //   },
+  // };
 
-  const dltOptions = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
-    },
-  };
+  // const dltOptions = {
+  //   method: "DELETE",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization:
+  //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+  //   },
+  // };
 
-  const sendDetails = async () => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" +
-          userID +
-          "/experiences/",
-        options
-      );
-      if (response.ok) {
-        let fetchedData = await response.json();
-        return fetchedData;
-      } else {
-        console.log("Couldn't delete");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const sendDetails = async () => {
+  //   try {
+  //     let response = await fetch(
+  //       "https://striveschool-api.herokuapp.com/api/profile/" +
+  //         userID +
+  //         "/experiences/",
+  //       options
+  //     );
+  //     if (response.ok) {
+  //       let fetchedData = await response.json();
+  //       return fetchedData;
+  //     } else {
+  //       console.log("Couldn't delete");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const deleteExp = async (k) => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" +
-          userID +
-          "/experiences/" + k ,
-        dltOptions
-      );
-      if (response.ok) {
-        let fetchedData = await response.json();
-        console.log(fetchedData);
-        dispatch(() => {
-          getExperienceAction(userID)
-        })
-        return fetchedData;
-      } else {
-        console.log("Couldn't post");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const deleteExp = async (k) => {
+  //   try {
+  //     let response = await fetch(
+  //       "https://striveschool-api.herokuapp.com/api/profile/" +
+  //         userID +
+  //         "/experiences/" +
+  //         k,
+  //       dltOptions
+  //     );
+  //     if (response.ok) {
+  //       let fetchedData = await response.json();
+  //       console.log(fetchedData);
+  //       return fetchedData;
+  //     } else {
+  //       console.log("Couldn't post");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleSubmit = (e) => {
+    dispatch(postExperienceAction(experience, userID))
     e.preventDefault();
-    sendDetails();
     setTimeout(() => {
       handleClose();
     }, 300);
   };
-
-
 
   return (
     <div className="wrapper-analytic mt-2">
@@ -145,7 +143,7 @@ export default function Experience() {
             <Container fluid>
               <ListGroup variant="flush">
                 {experiences &&
-                  experiences.map((i) => <ExperienceCard data={i} delete={deleteExp}/>)}
+                  experiences.map((i) => <ExperienceCard data={i} />)}
               </ListGroup>
               {/* <h2 className="mb-0">Junior Business Analyst</h2>
               <div>JAY DEE LOGISTICS LTD.FULL-TIME</div> */}
