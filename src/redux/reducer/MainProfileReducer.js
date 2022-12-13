@@ -1,4 +1,4 @@
-import { PROFILE_DETAILS } from "../action";
+import { PROFILE_DETAILS, EDIT_PROFILE } from "../action";
 const initialstate = {
   profilename: [],
 };
@@ -10,6 +10,12 @@ export const profileReducer = (state = initialstate, action) => {
         ...state,
         profilename: action.payload,
       };
+    case EDIT_PROFILE: {
+      return {
+        ...state,
+        profilename: action.payload,
+      };
+    }
     default:
       return state;
   }

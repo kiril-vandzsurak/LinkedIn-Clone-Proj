@@ -13,10 +13,11 @@ import Activity from "./Activity";
 import Experience from "./Experience";
 import SkillsComponent from "./SkillsComponent";
 import Interest from "./Interests";
-import Modal from "./Modal";
+import ModalComponet from "./ModalComponent";
 export default function MainProfile() {
   const dispatch = useDispatch();
   const profileDetails = useSelector((state) => state.profile.profilename);
+
   console.log(profileDetails);
   useEffect(() => {
     dispatch(getProfile());
@@ -36,7 +37,7 @@ export default function MainProfile() {
               <div className="profile-picture">
                 <img src={profileDetails.image} alt="profilepicture" />
                 <div>
-                  <BiPencil className="experice-icon" />
+                  <ModalComponet />
                 </div>
               </div>
               <div className="profile-name d-flex">
@@ -106,9 +107,6 @@ export default function MainProfile() {
       <div className="section-4">
         <Interest />
       </div>
-      {/* <div className="section-4">
-        <Modal />
-      </div> */}
     </Container>
   );
 }
