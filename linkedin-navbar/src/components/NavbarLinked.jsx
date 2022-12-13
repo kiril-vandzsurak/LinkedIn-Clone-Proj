@@ -72,6 +72,39 @@ const NavbarLinked = () => {
                 className="search"
                 onClick={handleClick}
               />
+              {showRes && (
+                <div className="ml-2">
+                  <div
+                    style={{
+                      width: "480px",
+                      height: "260px",
+                      border: "1px solid black",
+                      borderRadius: "4px",
+                      overflow: "auto",
+                      top: "46px",
+                      left: "1px",
+                      backgroundColor: "white",
+                    }}
+                    className="d-flex flex-column align-items-start position-absolute search"
+                  >
+                    <p style={{ marginLeft: "20px", marginTop: "10px" }}>
+                      Try searching for
+                    </p>
+                    {profiles
+                      .filter((n) => n.name.toLowerCase().includes(searchQuery))
+                      .map((elements) => (
+                        <EachProfile
+                          style={{
+                            marginLeft: "20px",
+                            fontWeight: "bold",
+                          }}
+                          profile={elements}
+                          key={elements._id}
+                        />
+                      ))}
+                  </div>
+                </div>
+              )}
             </InputGroup>
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -142,39 +175,20 @@ const NavbarLinked = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      {showRes && (
-        <div className="ml-2">
-          <div
-            style={{
-              width: "480px",
-              height: "260px",
-              border: "1px solid black",
-              marginLeft: "10px",
-              borderRadius: "4px",
-              overflow: "auto",
-              top: "4px",
-              left: "121px",
-            }}
-            className="d-flex flex-column align-items-start position-relative search"
-          >
-            <p style={{ marginLeft: "20px", marginTop: "10px" }}>
-              Try searching for
-            </p>
-            {profiles
-              .filter((n) => n.name.toLowerCase().includes(searchQuery))
-              .map((elements) => (
-                <EachProfile
-                  style={{
-                    marginLeft: "20px",
-                    fontWeight: "bold",
-                  }}
-                  profile={elements}
-                />
-              ))}
-          </div>
-        </div>
-      )}
+      <div className="jumbotron">
+        <h1 className="display-4">Hello, world!</h1>
+        <p className="lead">
+          This is a simple hero unit, a simple jumbotron-style component for
+          calling extra attention to featured content or information.
+        </p>
+        <p>
+          It uses utility classes for typography and spacing to space content
+          out within the larger container.
+        </p>
+        <a className="btn btn-primary btn-lg" href="#" role="button">
+          Learn more
+        </a>
+      </div>
     </>
   );
 };
