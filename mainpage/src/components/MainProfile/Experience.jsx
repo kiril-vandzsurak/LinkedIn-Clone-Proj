@@ -1,8 +1,96 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import {
+  Card,
+  Button,
+  Modal,
+  Form,
+  ListGroup,
+  Container,
+} from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiPencil, BiBuildings } from "react-icons/bi";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getExperienceAction } from "../redux/actions";
+import { postExperienceAction } from "../redux/actions";
+import ExperienceCard from "./ExperienceCard";
+
 export default function Experience() {
+  const dispatch = useDispatch();
+  const [show, setToShow] = useState(false);
+  const [showModal, setModal] = useState(false);
+  const user = useSelector((state) => state.profile.profilename);
+  const userID = user._id;
+  const experiences = useSelector((state) => state.profile.experience[0]);
+
+  const [experience, setExperience] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+  });
+
+  const onChangeHandler = (value, fieldToSet) => {
+    setExperience({
+      ...experience,
+      [fieldToSet]: value,
+    });
+  };
+
+  const handleClose = () => setModal(false);
+  const handleShow = () => setModal(true);
+
+  const sendDetails = async () => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+          userID +
+          "/experiences/",
+        options
+      );
+      if (response.ok) {
+        let fetchedData = await response.json();
+        setToShow(false)
+        setToShow(true)
+        console.log(fetchedData);
+        return fetchedData
+      } else {
+        console.log("Couldn't post");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    sendDetails();
+    setTimeout(() => {
+      handleClose();
+    }, 300);
+  };
+
+  useEffect(() => {
+    dispatch(getExperienceAction(userID));
+    setTimeout(() => {
+      setToShow(true);
+      console.log(experiences);
+    }, 300);
+  }, []);
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(experience),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+    },
+  };
+
   return (
     <div className="wrapper-analytic mt-2">
       <Card>
@@ -13,7 +101,7 @@ export default function Experience() {
             </div>
             <div className="experience-add">
               <div>
-                <AiOutlinePlus className="experice-icon" />
+                <AiOutlinePlus onClick={handleShow} className="experice-icon" />
               </div>
               <div>
                 <BiPencil className="experice-icon" />
@@ -24,13 +112,105 @@ export default function Experience() {
             <div className="experience">
               <BiBuildings className="experice-icon" />
             </div>
-            <div>
-              <h2 className="mb-0">Junior Business Analyst</h2>
-              <div>JAY DEE LOGISTICS LTD.FULL-TIME</div>
-            </div>
+            <Container fluid>
+              <ListGroup variant="flush">
+                {experiences &&
+                  experiences.map((i) => <ExperienceCard data={i} />)}
+              </ListGroup>
+              {/* <h2 className="mb-0">Junior Business Analyst</h2>
+              <div>JAY DEE LOGISTICS LTD.FULL-TIME</div> */}
+            </Container>
           </div>
         </Card.Body>
       </Card>
+
+      <>
+        <Modal
+          show={showModal}
+          onHide={handleClose}
+          backdrop="static"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Add Experience</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {/* role, company, startDate, endDate, description, area */}
+            <Form onSubmit={(e) => {
+              handleClose()
+              handleSubmit(e)
+            }}>
+              <Form.Group>
+                <Form.Label>What was your role?</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Technical Manager, Retail Assistant, etc."
+                  onChange={(e) => onChangeHandler(e.target.value, "role")}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Company Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Microsoft, Google, McDonald's..."
+                  onChange={(e) => onChangeHandler(e.target.value, "company")}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Location</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Where did you work? Country, city name etc"
+                  onChange={(e) => onChangeHandler(e.target.value, "area")}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Start Date</Form.Label>
+                <Form.Control
+                  type="date"
+                  onChange={(e) => onChangeHandler(e.target.value, "startDate")}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>
+                  End Date (Leave blank if you still work here)
+                </Form.Label>
+                <Form.Control
+                  type="date"
+                  onChange={(e) => onChangeHandler(e.target.value, "endDate")}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="What were your duties?"
+                  onChange={(e) =>
+                    onChangeHandler(e.target.value, "description")
+                  }
+                />
+                <hr />
+                <div className="mt-3 d-flex flex-row-reverse">
+                  <Button variant="secondary" className="ml-2">
+                    Close
+                  </Button>
+                  <Button variant="primary" type="submit">
+                    Add
+                  </Button>
+                </div>
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+        </Modal>
+      </>
     </div>
   );
 }

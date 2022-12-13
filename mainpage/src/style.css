@@ -126,3 +126,7 @@ html {
     max-height: 3.6em;
     text-overflow: ellipsis;
 }
+
+.search:focus {
+    display: flex;
+}

@@ -61,7 +61,7 @@ function MainProfile() {
                   <div className="open-to-work mt-3">
                     <div className="mt-2 ">
                       <h3 className="mb-0">Open to work</h3>
-                      Business Analyst, Junior Business Analyst................
+                      Business Analyst, Junior Business Analyst...
                       <p>
                         <a href="#"> See all details</a>
                       </p>

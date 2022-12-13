@@ -1,6 +1,8 @@
 export const GET_PEOPLE_DATA_TOP = "GET_PEOPLE_DATA_TOP";
 export const GET_PEOPLE_DATA_BOTTOM = "GET_PEOPLE_DATA_BOTTOM";
 export const PROFILE_DETAILS = "PROFILE_DETAILS";
+export const GET_EXPERIENCE_DETAILS = "GET_EXPERIENCE_DETAILS";
+export const SET_EXPERIENCE_POST = "SET_EXPERIENCE_POST";
 
 export const retrieveDataActionTop = (endpoint, headers) => {
   const getRandom = (arr, num) => {
@@ -86,6 +88,64 @@ export const getProfile = () => {
       }
     } catch (erro) {
       console.log("woohs nothing is found");
+    }
+  };
+};
+
+export const getExperienceAction = (userid) => {
+  return async (dispatch, getState) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+          userid +
+          "/experiences",
+        options
+      );
+      if (response.ok) {
+        let fetchedData = await response.json();
+        dispatch({
+          type: GET_EXPERIENCE_DETAILS,
+          payload: fetchedData,
+        });
+      } else {
+        console.log("error fetching experiences");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const optionsPost = {
+  method: "POST",
+  body: JSON.stringify(),
+  headers: {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+    "Content-Type": "application/json",
+  },
+};
+
+export const postExperienceAction = (data, userid) => {
+  return async (dispatch, getState) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+          userid +
+          "/experiences/",
+        optionsPost
+      );
+      if (response.ok) {
+        let fetchedData = await response.json();
+        dispatch({
+          SET_EXPERIENCE_POST,
+          payload: data,
+        });
+      } else {
+        console.log("Couldn't post");
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 };
