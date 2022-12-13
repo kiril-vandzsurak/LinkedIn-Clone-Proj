@@ -16,10 +16,13 @@ import {
 } from "react-icons/ri";
 import img from "./avatar-1.jpg";
 import { useEffect, useState } from "react";
-import ListGroup from "react-bootstrap/ListGroup";
+import EachProfile from "./EachProfile";
+import "./components-css/someCSS.css";
 
 const NavbarLinked = () => {
   const [profiles, setProfiles] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showRes, setShowRes] = useState(false);
 
   useEffect(() => {
     saveData();
@@ -48,58 +51,28 @@ const NavbarLinked = () => {
     }
   };
 
+  const handleClick = () => {
+    setShowRes(!showRes);
+  };
+
   return (
     <>
       <Navbar bg="light" expand="lg" style={{ padding: "0px", height: "48px" }}>
         <Container>
           <BsLinkedin style={{ fontSize: "35px", color: "#0A66C2" }} />
           <div className="d-flex flex-column">
-            <InputGroup
-              className="ml-2"
-              style={{ width: "350px", marginTop: "262px" }}
-            >
+            <InputGroup className="ml-2" style={{ width: "350px" }}>
               {/* <ImSearch /> */}
               <Form.Control
                 aria-label="Default"
                 aria-describedby="inputGroup-sizing-default"
                 placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search"
+                onClick={handleClick}
               />
-              {/* <div className="dataResult">
-              <ListGroup>
-                {profiles.map((elements) => (
-                  <ListGroup.Item>
-                    {elements.name} {elements.surname}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </div> */}
             </InputGroup>
-            <div
-              style={{
-                width: "480px",
-                height: "260px",
-                border: "1px solid black",
-                marginLeft: "10px",
-                borderRadius: "4px",
-                overflow: "auto",
-              }}
-              className="d-flex flex-column align-items-start"
-            >
-              <p style={{ marginLeft: "20px", marginTop: "10px" }}>
-                Try searching for
-              </p>
-              {profiles.map((elements) => (
-                <div
-                  style={{
-                    marginLeft: "20px",
-                    fontWeight: "bold",
-                  }}
-                  className="searchResult"
-                >
-                  {elements.name} {elements.surname}
-                </div>
-              ))}
-            </div>
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -169,6 +142,39 @@ const NavbarLinked = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      {showRes && (
+        <div className="ml-2">
+          <div
+            style={{
+              width: "480px",
+              height: "260px",
+              border: "1px solid black",
+              marginLeft: "10px",
+              borderRadius: "4px",
+              overflow: "auto",
+              top: "4px",
+              left: "121px",
+            }}
+            className="d-flex flex-column align-items-start position-relative search"
+          >
+            <p style={{ marginLeft: "20px", marginTop: "10px" }}>
+              Try searching for
+            </p>
+            {profiles
+              .filter((n) => n.name.toLowerCase().includes(searchQuery))
+              .map((elements) => (
+                <EachProfile
+                  style={{
+                    marginLeft: "20px",
+                    fontWeight: "bold",
+                  }}
+                  profile={elements}
+                />
+              ))}
+          </div>
+        </div>
+      )}
     </>
   );
 };
