@@ -13,6 +13,7 @@ import Activity from "./Activity";
 import Experience from "./Experience";
 import SkillsComponent from "./SkillsComponent";
 import Interest from "./Interests";
+import Modal from "./Modal";
 export default function MainProfile() {
   const dispatch = useDispatch();
   const profileDetails = useSelector((state) => state.profile.profilename);
@@ -105,6 +106,9 @@ export default function MainProfile() {
       <div className="section-4">
         <Interest />
       </div>
+      {/* <div className="section-4">
+        <Modal />
+      </div> */}
     </Container>
   );
 }

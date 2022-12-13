@@ -33,6 +33,7 @@ body {
 }
 .take-picture-icon {
   font-size: 1.3rem;
+  cursor: pointer;
 }
 .profile-info {
   display: flex;
@@ -119,6 +120,7 @@ body {
 }
 .icon {
   font-size: 1rem;
+  cursor: pointer;
 }
 .resource-mode {
   display: flex;
@@ -148,6 +150,7 @@ h2 {
 }
 .experice-icon {
   font-size: 2rem;
+  cursor: pointer;
 }
 .skill-work {
   border-bottom: 0.2px solid gray;
