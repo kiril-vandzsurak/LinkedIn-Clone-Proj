@@ -35,7 +35,7 @@ function MainProfile() {
               <div className="profile-picture">
                 <img src={profileDetails.image} alt="profilepicture" />
                 <div>
-                  <BiPencil className="experice-icon" />
+                  <BiPencil id="edit-profile-icon" className="experice-icon" />
                 </div>
               </div>
               <div className="profile-name d-flex">

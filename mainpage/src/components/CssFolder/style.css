@@ -158,11 +158,15 @@ h2 {
 }
 .experice-icon {
   font-size: 2rem;
-  position: absolute;
-  right: -770px;
   top: 70px;
   margin-bottom: 10px;
 }
+
+#edit-profile-icon{
+  position: absolute;
+  right: -770px;
+}
+
 .skill-work {
   border-bottom: 0.2px solid gray;
 }
