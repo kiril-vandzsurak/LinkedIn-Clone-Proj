@@ -1,9 +1,17 @@
 export const GET_PEOPLE_DATA_TOP = "GET_PEOPLE_DATA_TOP";
 export const GET_PEOPLE_DATA_BOTTOM = "GET_PEOPLE_DATA_BOTTOM";
 export const PROFILE_DETAILS = "PROFILE_DETAILS";
+export const OTHER_USER_DETAILS= "OTHER_USER_DETAILS"
 export const GET_EXPERIENCE_DETAILS = "GET_EXPERIENCE_DETAILS";
 export const EXP_TO_EDIT = "EDIT_EXPERIENCE_DETAILS"
 export const EDIT_PROFILE = "EDIT_PROFILE";
+export const GET_POST_DATA = "GET_POST_DATA"
+
+export const getPostsAction = () => {
+  return async (dispatch) => {
+
+  }
+}
 
 export const updateProfile = (changeVaules) => {
   const option = {
@@ -111,6 +119,30 @@ export const getProfile = () => {
         console.log(fetchedData);
         dispatch({
           type: PROFILE_DETAILS,
+          payload: fetchedData,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (erro) {
+      console.log("woohs nothing is found");
+    }
+  };
+};
+
+
+export const getOtherProfile = (userid) => {
+  return async (dispatch, getState) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" + userid,
+        options
+      );
+      if (response.ok) {
+        const fetchedData = await response.json();
+        console.log(fetchedData);
+        dispatch({
+          type: OTHER_USER_DETAILS,
           payload: fetchedData,
         });
       } else {
