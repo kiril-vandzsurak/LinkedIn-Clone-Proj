@@ -35,9 +35,9 @@ export default function MainProfile() {
             <div className="profile-info">
               <div className="profile-picture">
                 <img src={profileDetails.image} alt="profilepicture" />
-                <div>
-                  <ModalComponent />
-                </div>
+              </div>
+              <div className="profile-panic">
+                <ModalComponent />
               </div>
               <div className="profile-name d-flex">
                 <div className="profile-details">

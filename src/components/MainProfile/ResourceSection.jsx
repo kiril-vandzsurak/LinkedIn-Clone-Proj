@@ -21,8 +21,8 @@ export default function ResourceSection() {
               <div>
                 <FaSatelliteDish className="icon" />
               </div>
-              <div>
-                <h2 className="d-flex">
+              <div className="mb-2">
+                <h2 className="d-flex mb-0">
                   Creator mode
                   <Button className="btn-4">Off</Button>
                 </h2>
@@ -31,11 +31,11 @@ export default function ResourceSection() {
               </div>
             </div>
             <div className="resource-mode-2">
-              <div>
+              <div className="mt-3">
                 <SlPeople className="icon" />
               </div>
-              <div>
-                <h2>My network</h2>
+              <div className="mt-3">
+                <h2 className="mb-0">My network</h2>
                 See and manage your connections and interests.
               </div>
             </div>
