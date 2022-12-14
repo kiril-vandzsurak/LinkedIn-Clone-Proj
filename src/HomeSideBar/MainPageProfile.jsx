@@ -61,14 +61,15 @@ export default function MainPageProfile() {
               </a>
             </div>
           </ListGroup.Item>
-          <a>
-            <ListGroup.Item className="my-items">
+
+          <ListGroup.Item className="my-items">
+            <a href="#">
               <span>
                 <RiBookmarkFill />
               </span>
               <span>My items</span>
-            </ListGroup.Item>
-          </a>
+            </a>
+          </ListGroup.Item>
         </ListGroup>
       </Card>
       <Card className="profile-card-2 mt-2">
@@ -76,7 +77,9 @@ export default function MainPageProfile() {
           <Card.Text>
             <a>
               <span className="discover-span">Group</span>
-              <div className="discover-event">
+            </a>
+            <div className="discover-event">
+              <a>
                 <span className="discover-span">Events</span>
                 <span>
                   <Button className="discover-btn">
@@ -84,8 +87,9 @@ export default function MainPageProfile() {
                     <BsPlus className="icons" />
                   </Button>
                 </span>
-              </div>
-            </a>
+              </a>
+            </div>
+
             <span className="discover-span">Followed Hashtags</span>
           </Card.Text>
         </Card.Body>
