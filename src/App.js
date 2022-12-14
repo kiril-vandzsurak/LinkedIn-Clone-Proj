@@ -1,32 +1,19 @@
-import { Container, Row, Col, Navbar } from "react-bootstrap";
-import Footer from "./components/Footer";
-import Sidebar from "./components/Sidebar";
-import Sidebar2 from "./components/Sidebar2";
+import ProfileView from "./components/ProfileView";
 import NavbarLinked from "./components/Navbar";
-import MainProfile from "./components/MainProfile/MainProfile";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <NavbarLinked />
-      <Container className="main-con">
-        <Row className="main-con-row">
-          <Col md={6}>
-            <MainProfile />
-          </Col>
-          <Col md={2}>
-            <Container className="placeholder2">
-              <Sidebar />
-            </Container>
-            <Container className="placeholder3 mt-3">
-              <Sidebar2 />
-            </Container>
-          </Col>
-        </Row>
-        <Row>
-          <Footer />
-        </Row>
-      </Container>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<h1>Home Placeholder</h1>} />
+        <Route path="/profile/" element={<ProfileView />} />
+      </Routes>
+
+      </BrowserRouter>
     </>
   );
 }
