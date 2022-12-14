@@ -360,3 +360,7 @@ body {
   top: 2rem;
   width: 250px;
 }
+
+a {
+  color: black;
+}
