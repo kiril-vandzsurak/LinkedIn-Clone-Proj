@@ -17,7 +17,6 @@ import {
 import img from "./avatar-1.jpg";
 import { useEffect, useState } from "react";
 import EachProfile from "./EachProfile";
-import "./components-css/someCSS.css";
 
 const NavbarLinked = () => {
   const [profiles, setProfiles] = useState([]);
@@ -57,10 +56,10 @@ const NavbarLinked = () => {
 
   return (
     <>
-      <Navbar bg="light" expand="lg" style={{ padding: "0px", height: "48px" }}>
+      <Navbar bg="light" style={{ padding: "0px", height: "48px" }}>
         <Container>
           <BsLinkedin style={{ fontSize: "35px", color: "#0A66C2" }} />
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column searchBar">
             <InputGroup className="ml-2" style={{ width: "350px" }}>
               {/* <ImSearch /> */}
               <Form.Control
@@ -107,6 +106,7 @@ const NavbarLinked = () => {
               )}
             </InputGroup>
           </div>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
