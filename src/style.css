@@ -330,3 +330,33 @@ body {
     height: 60px;
   }
   
+  .post-card{
+    width: 100%;
+    min-height: 15rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid darkgray;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .comment-img-con img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 2px solid rgb(119, 119, 119);
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+.comment-header{
+  line-height: 3rem;
+  position: relative;
+}
+
+.comment-subheader{
+  line-height: 1rem;
+  position: absolute;
+  top: 2rem;
+  width: 250px;
+}
