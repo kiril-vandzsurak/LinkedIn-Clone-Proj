@@ -127,7 +127,7 @@ function ModalComponent() {
                 onChange={(e) => onChangeHandler(e.target.value, setImage)}
               />
             </Form.Group>
-            {/* Name pronunciation
+            Name pronunciation
             <p>! This can only be added using our mobile app</p>
             <Form.Group
               className="mb-3"
@@ -146,7 +146,7 @@ function ModalComponent() {
                   <h3>Add new position</h3>
                 </a>
               </div>
-            </Form.Group> */}
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>

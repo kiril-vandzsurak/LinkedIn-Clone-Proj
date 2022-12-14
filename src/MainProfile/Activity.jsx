@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { BiRightArrowAlt } from "react-icons/bi";
+import ActivityModal from "./ActivityModal";
 export default function Activity() {
   return (
     <div className="wrapper-analytic mt-2">
@@ -13,9 +14,7 @@ export default function Activity() {
                 <a href="#">14 followers</a>
               </p>
             </div>
-            <div className="post-btn">
-              <Button className="btn-2">Start a post</Button>
-            </div>
+            <ActivityModal />
           </Card.Title>
           <Card.Subtitle className="second-section-p"></Card.Subtitle>
           <div className="profile-resourcs-section">

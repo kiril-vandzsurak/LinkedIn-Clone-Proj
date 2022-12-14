@@ -5,7 +5,6 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { SiCampaignmonitor } from "react-icons/si";
 import SecondSection from "../MainProfile/SecondSection";
 import AnalyticsSection from "./AnalyticsSection";
-import { BiPencil } from "react-icons/bi";
 import ResourceSection from "./ResourceSection";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../redux/action";
@@ -14,6 +13,7 @@ import Experience from "./Experience";
 import SkillsComponent from "./SkillsComponent";
 import Interest from "./Interests";
 import ModalComponet from "./ModalComponent";
+import JobPreferencesModal from "./JobPreferencesModal";
 export default function MainProfile() {
   const dispatch = useDispatch();
   const profileDetails = useSelector((state) => state.profile.profilename);
@@ -61,18 +61,7 @@ export default function MainProfile() {
                     <Button className="btn-2">Add profile Section</Button>
                     <Button className="btn-3">more</Button>
                   </div>
-                  <div className="open-to-work mt-3">
-                    <div className="mt-2 ">
-                      <h3 className="mb-0">Open to work</h3>
-                      Business Analyst, Junior Business Analyst................
-                      <p>
-                        <a href="#"> See all details</a>
-                      </p>
-                    </div>
-                    <div>
-                      <BiPencil className="icon" />
-                    </div>
-                  </div>
+                  <JobPreferencesModal />
                 </div>
 
                 <div className="profile-job-details">

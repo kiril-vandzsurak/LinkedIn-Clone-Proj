@@ -97,6 +97,7 @@ body {
   justify-content: space-between;
   background-color: #e8e5df;
   padding-inline: 10px;
+  cursor: pointer;
 }
 .second-section-p {
   gap: 5px;
@@ -176,4 +177,79 @@ h3 {
 .companies-info img {
   width: 50px;
   height: 60px;
+}
+.activity-modal-image img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
+}
+.activity-modal {
+  gap: 10px;
+  display: flex;
+}
+.activity-modal-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 20px;
+  background-color: white;
+  border-color: #5e5e5e;
+  color: #5e5e5e;
+}
+.activity-text {
+  border: none;
+}
+.activity-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.activity-footer {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.activity-footer-icons {
+  width: 1.3rem;
+  height: 1.4rem;
+  cursor: pointer;
+  /* border-radius: 50%;
+  border: 1px solid black; */
+}
+.activity-footer-icons:hover {
+  border-radius: 30px;
+  background-color: gray;
+  border: 1px solid black;
+}
+.activity-footer-btn {
+  border-radius: 30px;
+  color: #5e5e5e;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.activity-footer-btn:hover {
+  background-color: gray;
+}
+.icon-btn {
+  border-radius: 30px;
+  color: #5e5e5e;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.icon-btn:hover {
+  background-color: gray;
+}
+.job-footer {
+  display: flex;
+  justify-content: flex-start;
 }
