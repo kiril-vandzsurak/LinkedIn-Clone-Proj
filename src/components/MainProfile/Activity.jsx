@@ -11,7 +11,9 @@ export default function Activity() {
             <div className="activity-followers">
               <h2 className="mb-0">Activity</h2>
               <p>
-                <a href="#">14 followers</a>
+                <a href="#" className="follower">
+                  14 followers
+                </a>
               </p>
             </div>
             <ActivityModal />

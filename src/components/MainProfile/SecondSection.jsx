@@ -25,22 +25,21 @@ export default function SecondSection() {
               Complete 1 step to achieve <a href="#">All-star</a>
             </div>
           </div>
-
-          <Card.Body>
+          <div className="add-sumary-div mt-3">
             <div className="add-sumary-section">
               <div>
-                <ImAddressBook className="icon" />
+                <ImAddressBook className="icon-summary" />
+                <span className="t-bold">
+                  Write a sumaary to highlight your personality or work experice
+                </span>
               </div>
               <div>
-                Wrire a sumaary to highlight your personality or work experice
+                Members who include a summary receive up to 3.9 times as many
+                profile views.
+                <SuggestedModal />
               </div>
             </div>
-            <div>
-              Members who include a summary receive up to 3.9 times as many
-              profile views.
-            </div>
-            <SuggestedModal />
-          </Card.Body>
+          </div>
         </Card.Body>
       </Card>
     </div>
