@@ -3,6 +3,36 @@ export const GET_PEOPLE_DATA_BOTTOM = "GET_PEOPLE_DATA_BOTTOM";
 export const PROFILE_DETAILS = "PROFILE_DETAILS";
 export const GET_EXPERIENCE_DETAILS = "GET_EXPERIENCE_DETAILS";
 export const EXP_TO_EDIT = "EDIT_EXPERIENCE_DETAILS"
+export const EDIT_PROFILE = "EDIT_PROFILE";
+
+export const updateProfile = (changeVaules) => {
+  const option = {
+    method: "PUT",
+    body: JSON.stringify(changeVaules),
+
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+      "Content-Type": "application/json",
+    },
+  };
+  return async (dispatch) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile",
+        option
+      );
+      if (response.ok) {
+        console.log(response);
+      } else {
+        console.log("error");
+      }
+    } catch (erro) {
+      console.log("woohs nothing is found");
+    }
+  };
+};
+
 
 export const retrieveDataActionTop = (endpoint, headers) => {
   const getRandom = (arr, num) => {

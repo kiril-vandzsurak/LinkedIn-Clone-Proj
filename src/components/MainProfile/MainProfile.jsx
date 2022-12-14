@@ -1,27 +1,29 @@
 import React, { useEffect } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-import style from "../CssFolder/style.css";
 import { BsFillCameraFill } from "react-icons/bs";
 import { SiCampaignmonitor } from "react-icons/si";
 import SecondSection from "../MainProfile/SecondSection";
 import AnalyticsSection from "./AnalyticsSection";
-import { BiPencil } from "react-icons/bi";
 import ResourceSection from "./ResourceSection";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../redux/actions";
 import Activity from "./Activity";
+import "../CssFolder/style.css"
 import Experience from "./Experience";
 import SkillsComponent from "./SkillsComponent";
 import Interest from "./Interests";
-function MainProfile() {
+import ModalComponent from "./ModalComponent";
+import JobPreferencesModal from "./JobPreferencesModal";
+export default function MainProfile() {
   const dispatch = useDispatch();
   const profileDetails = useSelector((state) => state.profile.profilename);
+
   console.log(profileDetails);
   useEffect(() => {
     dispatch(getProfile());
   }, []);
   return (
-    <>
+    <Container className="profile-main ">
       <div className="section-1">
         <Card className="section-profile">
           <div className="top-side">
@@ -35,14 +37,15 @@ function MainProfile() {
               <div className="profile-picture">
                 <img src={profileDetails.image} alt="profilepicture" />
                 <div>
-                  <BiPencil id="edit-profile-icon" className="experice-icon" />
+                  <ModalComponent />
                 </div>
               </div>
               <div className="profile-name d-flex">
                 <div className="profile-details">
-                  <h1 className="mb-0 mt-2">
-                    {profileDetails.name} {profileDetails.surname}
-                  </h1>
+                  <h4 className="mb-0">
+                    {profileDetails.name}
+                    {profileDetails.surname}
+                  </h4>
 
                   <p className="mb-0">{profileDetails.title}</p>
                   <p className="mb-0">Sytems & Networks</p>
@@ -58,18 +61,7 @@ function MainProfile() {
                     <Button className="btn-2">Add profile Section</Button>
                     <Button className="btn-3">more</Button>
                   </div>
-                  <div className="open-to-work mt-3">
-                    <div className="mt-2 ">
-                      <h3 className="mb-0">Open to work</h3>
-                      Business Analyst, Junior Business Analyst...
-                      <p>
-                        <a href="#"> See all details</a>
-                      </p>
-                    </div>
-                    <div>
-                      <BiPencil className="icon" />
-                    </div>
-                  </div>
+                  <JobPreferencesModal />
                 </div>
 
                 <div className="profile-job-details">
@@ -104,8 +96,6 @@ function MainProfile() {
       <div className="section-4">
         <Interest />
       </div>
-    </>
+    </Container>
   );
 }
-
-export default MainProfile;
