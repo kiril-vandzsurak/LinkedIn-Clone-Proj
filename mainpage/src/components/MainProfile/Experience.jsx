@@ -171,7 +171,7 @@ export default function Experience() {
                 />
                 <hr />
                 <div className="mt-3 d-flex flex-row-reverse">
-                  <Button variant="secondary" className="ml-2">
+                  <Button onClick={handleClose} variant="secondary" className="ml-2">
                     Close
                   </Button>
                   <Button variant="primary" type="submit">

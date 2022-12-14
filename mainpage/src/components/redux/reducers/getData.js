@@ -18,6 +18,8 @@ const getData = (state = initialState, action) => {
         ...state,
         bottom: action.payload,
       };
+
+      
     default:
       return state;
   }

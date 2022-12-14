@@ -1,10 +1,11 @@
 import { PROFILE_DETAILS } from "../actions";
 import { GET_EXPERIENCE_DETAILS } from "../actions";
-import { SET_EXPERIENCE_POST } from "../actions";
+import { EXP_TO_EDIT } from "../actions";
+
 const initialstate = {
   profilename: [],
   experience: [],
-  toPost: [],
+  toEdit: []
 };
 
 const profileReducer = (state = initialstate, action) => {
@@ -19,11 +20,11 @@ const profileReducer = (state = initialstate, action) => {
         ...state,
         experience: action.payload,
       };
-    case SET_EXPERIENCE_POST:
-      return {
+    case EXP_TO_EDIT:
+      return{
         ...state,
-        toPost: [...state.toPost, action.payload],
-      };
+        toEdit: action.payload
+      }
 
     default:
       return state;
