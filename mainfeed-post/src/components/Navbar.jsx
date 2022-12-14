@@ -14,7 +14,7 @@ import {
   RiMessage2Fill,
   RiNotification3Fill,
 } from "react-icons/ri";
-import img from "./avatar-1.jpg";
+// import img from "./avatar-1.jpg";
 import { useEffect, useState } from "react";
 import EachProfile from "./EachProfile";
 
@@ -56,10 +56,10 @@ const NavbarLinked = () => {
 
   return (
     <>
-      <Navbar bg="light" style={{ padding: "0px", height: "48px" }}>
+      <Navbar bg="light" expand="lg" style={{ padding: "0px", height: "48px" }}>
         <Container>
           <BsLinkedin style={{ fontSize: "35px", color: "#0A66C2" }} />
-          <div className="d-flex flex-column searchBar">
+          <div className="d-flex flex-column">
             <InputGroup className="ml-2" style={{ width: "350px" }}>
               {/* <ImSearch /> */}
               <Form.Control
@@ -71,42 +71,8 @@ const NavbarLinked = () => {
                 className="search"
                 onClick={handleClick}
               />
-              {showRes && (
-                <div className="ml-2">
-                  <div
-                    style={{
-                      width: "480px",
-                      height: "260px",
-                      border: "1px solid black",
-                      borderRadius: "4px",
-                      overflow: "auto",
-                      top: "46px",
-                      left: "1px",
-                      backgroundColor: "white",
-                    }}
-                    className="d-flex flex-column align-items-start position-absolute search"
-                  >
-                    <p style={{ marginLeft: "20px", marginTop: "10px" }}>
-                      Try searching for
-                    </p>
-                    {profiles
-                      .filter((n) => n.name.toLowerCase().includes(searchQuery))
-                      .map((elements) => (
-                        <EachProfile
-                          style={{
-                            marginLeft: "20px",
-                            fontWeight: "bold",
-                          }}
-                          profile={elements}
-                          key={elements._id}
-                        />
-                      ))}
-                  </div>
-                </div>
-              )}
             </InputGroup>
           </div>
-
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
@@ -143,7 +109,7 @@ const NavbarLinked = () => {
 
               <div className="d-flex flex-column">
                 <img
-                  src={img}
+                  src=""
                   alt="..."
                   style={{
                     width: "22px",
@@ -175,6 +141,39 @@ const NavbarLinked = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      {showRes && (
+        <div className="ml-2">
+          <div
+            style={{
+              width: "480px",
+              height: "260px",
+              border: "1px solid black",
+              marginLeft: "10px",
+              borderRadius: "4px",
+              overflow: "auto",
+              top: "4px",
+              left: "121px",
+            }}
+            className="d-flex flex-column align-items-start position-relative search"
+          >
+            <p style={{ marginLeft: "20px", marginTop: "10px" }}>
+              Try searching for
+            </p>
+            {profiles
+              .filter((n) => n.name.toLowerCase().includes(searchQuery))
+              .map((elements) => (
+                <EachProfile
+                  style={{
+                    marginLeft: "20px",
+                    fontWeight: "bold",
+                  }}
+                  profile={elements}
+                />
+              ))}
+          </div>
+        </div>
+      )}
     </>
   );
 };
