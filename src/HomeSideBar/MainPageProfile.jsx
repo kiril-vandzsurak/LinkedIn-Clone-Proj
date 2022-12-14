@@ -63,12 +63,10 @@ export default function MainPageProfile() {
           </ListGroup.Item>
 
           <ListGroup.Item className="my-items">
-            <a href="#">
-              <span>
-                <RiBookmarkFill />
-              </span>
-              <span>My items</span>
-            </a>
+            <span>
+              <RiBookmarkFill />
+            </span>
+            <span>My items</span>
           </ListGroup.Item>
         </ListGroup>
       </Card>
