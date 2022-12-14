@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+    min-width: 100%;
+}
+
+.main-con {
+    min-height: 100vh;
+    min-width: 100%;
+    background-color: rgb(226, 226, 226);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.main-con-row {
+    margin-top: 20px;
+    margin-bottom: 80px;
+    justify-content: center;
+}
+
+.footer-list {
+    list-style: none;
+}
+
+.footer-list li {
+    font-size: 0.8em;
+    color: rgb(75, 75, 75);
+    margin-bottom: 4px;
+}
+
+.footer-logo {
+    margin-left: 40px;
+    width: 120px;
+}
+
+.footer-icon {
+    font-size: 3em;
+}
+
+.placeholder {
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    background-color: white;
+    min-height: 800px;
+}
+
+.placeholder2 {
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    background-color: white;
+    height: fit-content;
+}
+
+.placeholder3 {
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    background-color: white;
+    height: fit-content;
+}
+
+.people-card {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+}
+
+#name-text {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.people-card span {
+    color: gray;
+    font-size: 0.7em;
+}
+
+.people-icon {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+
+}
+
+#people-btn {
+    display: flex;
+    border-radius: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 110px;
+    justify-self: center;
+    justify-content: center;
+}
+
+#people-btn:hover {
+    color: grey;
+    background-color: rgb(224, 224, 224);
+}
+
+#btn-icon {
+    color: grey;
+    font-size: 1em;
+    margin-right: 2px;
+}
+
+#btn-icon:hover {
+    color: white;
+}
+
+.peopleCard {
+    height: 4rem;
+    margin-bottom: 5px;
+
+}
+
+.title-text {
+    overflow: hidden;
+    width: 90%;
+    line-height: 0.8em;
+    max-height: 3.6em;
+    text-overflow: ellipsis;
+}
+
+.search:focus {
+    display: flex;
+}
