@@ -1,5 +1,6 @@
 import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
 import { IoIosPersonAdd } from "react-icons/io";
+import { Link } from "react-router-dom";
 const PeopleCards = (props) => {
   return (
     <>
@@ -17,7 +18,7 @@ const PeopleCards = (props) => {
             <Container className="d-flex flex-column">
               <Container className="peopleCard">
                   <div className="title-text">
-                    <span id="name-text">{props.name} • 1st</span>
+                    <Link to={"/profile/" + props.userid}><span id="name-text">{props.name} • 1st</span></Link>
                   </div>
                   <span> {props.location}</span>
               </Container>

@@ -1,12 +1,14 @@
 import { PROFILE_DETAILS } from "../actions";
 import { GET_EXPERIENCE_DETAILS } from "../actions";
 import { EXP_TO_EDIT } from "../actions";
+import { OTHER_USER_DETAILS } from "../actions";
 import { EDIT_PROFILE } from "../actions";
 
 const initialstate = {
   profilename: [],
   experience: [],
   toEdit: [],
+  otherUser: [],
 };
 
 const profileReducer = (state = initialstate, action) => {
@@ -15,6 +17,11 @@ const profileReducer = (state = initialstate, action) => {
       return {
         ...state,
         profilename: action.payload,
+      };
+    case OTHER_USER_DETAILS:
+      return {
+        ...state,
+        otherUser: action.payload,
       };
     case GET_EXPERIENCE_DETAILS:
       return {

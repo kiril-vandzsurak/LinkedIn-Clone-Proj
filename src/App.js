@@ -1,5 +1,7 @@
 import ProfileView from "./components/ProfileView";
+import ProfileViewUser from "./components/ProfileView_user";
 import NavbarLinked from "./components/Navbar";
+import Mainfeed from "./components/FeedPage/mainfeed";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -9,8 +11,9 @@ function App() {
       <NavbarLinked />
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<h1>Home Placeholder</h1>} />
-        <Route path="/profile/" element={<ProfileView />} />
+        <Route path="/" element={<Mainfeed />} />
+        <Route path="/profile/me" element={<ProfileView />} />
+        <Route path="profile/:userid" element={<ProfileViewUser/>} />
       </Routes>
 
       </BrowserRouter>
