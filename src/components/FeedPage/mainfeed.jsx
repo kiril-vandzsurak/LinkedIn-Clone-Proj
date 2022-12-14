@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import ShowPosts from "./showposts";
 import Footer from "../Footer";
 
 const Mainfeed = () => {
@@ -9,12 +10,12 @@ const Mainfeed = () => {
           <Container className="placeholder2">
             <p>Abi profile compoenent here</p>
             <p>
-                <img src="https://i.ibb.co/VN0gGN3/sidebar-example.png"/>
+              <img src="https://i.ibb.co/VN0gGN3/sidebar-example.png" />
             </p>
           </Container>
         </Col>
         <Col md={4}>
-          <Container style={{minHeight: "800px"}} className="placeholder2"></Container>
+          <ShowPosts />
         </Col>
         <Col md={2}>
           <Container className="placeholder2"></Container>
