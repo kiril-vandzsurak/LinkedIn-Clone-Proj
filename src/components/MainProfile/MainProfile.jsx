@@ -8,7 +8,6 @@ import ResourceSection from "./ResourceSection";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../redux/actions";
 import Activity from "./Activity";
-import "../CssFolder/style.css"
 import Experience from "./Experience";
 import SkillsComponent from "./SkillsComponent";
 import Interest from "./Interests";
@@ -23,7 +22,7 @@ export default function MainProfile() {
     dispatch(getProfile());
   }, []);
   return (
-    <Container className="profile-main ">
+    <Container className="">
       <div className="section-1">
         <Card className="section-profile">
           <div className="top-side">

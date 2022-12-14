@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { ImAddressBook } from "react-icons/im";
+import SuggestedModal from "./SuggestedModal";
 
 export default function SecondSection() {
   const now = 30;
@@ -38,7 +39,7 @@ export default function SecondSection() {
               Members who include a summary receive up to 3.9 times as many
               profile views.
             </div>
-            <Button variant="primary">Add a summary</Button>
+            <SuggestedModal />
           </Card.Body>
         </Card.Body>
       </Card>
