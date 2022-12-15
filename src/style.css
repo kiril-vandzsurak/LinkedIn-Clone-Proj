@@ -360,3 +360,12 @@ body {
   top: 2rem;
   width: 250px;
 }
+
+a {
+  color: black;
+}
+
+a:hover{
+  color: darkgray;
+  text-decoration: none;
+}

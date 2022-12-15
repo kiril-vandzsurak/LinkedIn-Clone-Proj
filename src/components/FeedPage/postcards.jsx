@@ -2,7 +2,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Postcard = (props) => {
-  if (props.data.user !== null) {
+  if (props.data.user !== null ) {
     return (
       <>
         <Container className="post-card">

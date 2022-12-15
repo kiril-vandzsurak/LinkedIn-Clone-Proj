@@ -25,9 +25,7 @@ export default function Experience() {
   const experiences = useSelector((state) => state.profile.experience);
 
   useEffect(() => {
-    if (userID){
-      dispatch(getExperienceAction(userID))
-    }
+    dispatch(getExperienceAction(userID));
     setTimeout(() => {
       setToShow(true);
     }, 300);
@@ -52,9 +50,8 @@ export default function Experience() {
   const handleClose = () => setModal(false);
   const handleShow = () => setModal(true);
 
-
   const handleSubmit = (e) => {
-    dispatch(postExperienceAction(experience, userID))
+    dispatch(postExperienceAction(experience, userID));
     e.preventDefault();
     setTimeout(() => {
       handleClose();
@@ -85,7 +82,9 @@ export default function Experience() {
             <Container fluid>
               <ListGroup variant="flush">
                 {experiences &&
-                  experiences.map((i) => <ExperienceCard data={i} key={i._id} />)}
+                  experiences.map((i) => (
+                    <ExperienceCard data={i} key={i._id} />
+                  ))}
               </ListGroup>
               {/* <h2 className="mb-0">Junior Business Analyst</h2>
               <div>JAY DEE LOGISTICS LTD.FULL-TIME</div> */}
@@ -171,7 +170,11 @@ export default function Experience() {
                 />
                 <hr />
                 <div className="mt-3 d-flex flex-row-reverse">
-                  <Button onClick={handleClose} variant="secondary" className="ml-2">
+                  <Button
+                    onClick={handleClose}
+                    variant="secondary"
+                    className="ml-2"
+                  >
                     Close
                   </Button>
                   <Button variant="primary" type="submit">
