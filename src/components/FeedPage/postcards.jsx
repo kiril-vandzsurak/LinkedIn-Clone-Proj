@@ -20,6 +20,7 @@ const Postcard = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.profile.profilename);
   const userID = user._id;
+  const formatDate = (d) => new Date(d).toISOString().substring(0, 10);
   if (props.data.user !== null) {
     return (
       <>
@@ -73,7 +74,8 @@ const Postcard = (props) => {
               </div>
             </div>
           </Row>
-          <div className="mt-4">
+          <div id="date" className="mt-3 text-muted">Posted on: {formatDate(props.data.createdAt)}</div>
+          <div className="mt-2">
             <p>{props.data.text}</p>
             <Row className="justify-content-center">
               <span>

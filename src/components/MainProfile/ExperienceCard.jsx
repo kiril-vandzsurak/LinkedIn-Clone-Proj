@@ -34,7 +34,7 @@ const ExperienceCard = (props) => {
             <p>
               <span className="font-weight-bold" style={{ fontSize: "25px" }}>
                 {props.data.role}
-                {userID ? (
+                {user.username === props.data.username ? (
                   <BiPencil onClick={() => {
                     showModal()
                     dispatch(getExperienceEdit(props.data._id, userID))
@@ -56,7 +56,7 @@ const ExperienceCard = (props) => {
             <p>{props.data.description}</p>
           </Card.Body>
           <Card.Footer>
-            {userID ? (
+            {user.username === props.data.username ? (
               <Button
                 variant="danger"
                 onClick={() => {

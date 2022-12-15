@@ -70,9 +70,6 @@ export default function Experience() {
               <div>
                 <AiOutlinePlus onClick={handleShow} className="experice-icon" />
               </div>
-              <div>
-                <BiPencil className="experice-icon" />
-              </div>
             </div>
           </Card.Title>
           <div className="experience-note">

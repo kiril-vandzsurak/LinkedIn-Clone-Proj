@@ -66,14 +66,7 @@ export default function ExperienceOther() {
             <div className="activity-followers">
               <h2 className="mb-0">Experience</h2>
             </div>
-            <div className="experience-add">
-              <div>
-                <AiOutlinePlus onClick={handleShow} className="experice-icon" />
-              </div>
-              <div>
-                <BiPencil className="experice-icon" />
-              </div>
-            </div>
+
           </Card.Title>
           <div className="experience-note">
             <div className="experience">
