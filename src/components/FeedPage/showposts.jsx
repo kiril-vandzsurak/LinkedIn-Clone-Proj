@@ -67,7 +67,7 @@ const ShowPosts = () => {
           hasMore={lastObjectPosition < loadedPosts.length}
           loader={<Spinner animation="border" />}
         > */}
-        {posts && posts.map((i) => <Postcard data={i} key={i._id}/>)}
+        {posts && posts.slice(0,50).map((i) => <Postcard data={i} key={i._id}/>)}
         {/* </InfiniteScroll> */}
       </div>
     </>
