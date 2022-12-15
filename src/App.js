@@ -8,14 +8,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <NavbarLinked />
       <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Mainfeed />} />
-        <Route path="/profile/me" element={<ProfileView />} />
-        <Route path="profile/:userid" element={<ProfileViewUser/>} />
-      </Routes>
-
+        <NavbarLinked />
+        <Routes>
+          <Route path="/" element={<Mainfeed />} />
+          <Route path="/profile/me" element={<ProfileView />} />
+          <Route path="profile/:userid" element={<ProfileViewUser />} />
+        </Routes>
       </BrowserRouter>
     </>
   );
