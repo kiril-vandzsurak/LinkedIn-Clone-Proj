@@ -6,6 +6,7 @@ export const GET_EXPERIENCE_DETAILS = "GET_EXPERIENCE_DETAILS";
 export const EXP_TO_EDIT = "EDIT_EXPERIENCE_DETAILS";
 export const EDIT_PROFILE = "EDIT_PROFILE";
 export const GET_POST_DATA = "GET_POST_DATA";
+export const GET_EXPERIENCE_DETAILS_OTHER = "GET_EXPERIENCE_DETAILS_OTHER"
 
 export const getPostsAction = () => {
   const options = {
@@ -189,6 +190,30 @@ export const getExperienceAction = (userid) => {
         let fetchedData = await response.json();
         dispatch({
           type: GET_EXPERIENCE_DETAILS,
+          payload: fetchedData,
+        });
+      } else {
+        console.log("error fetching experiences");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getExperienceOtherAction = (userid) => {
+  return async (dispatch, getState) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+          userid +
+          "/experiences/",
+        options
+      );
+      if (response.ok) {
+        let fetchedData = await response.json();
+        dispatch({
+          type: GET_EXPERIENCE_DETAILS_OTHER,
           payload: fetchedData,
         });
       } else {
