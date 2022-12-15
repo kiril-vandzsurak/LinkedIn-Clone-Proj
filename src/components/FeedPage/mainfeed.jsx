@@ -7,7 +7,7 @@ const Mainfeed = () => {
   return (
     <Container className="main-con">
       <Row className="main-con-row">
-        <Col md={2}>
+        <Col md={2} className="align-content-center">
             <MainPageProfile />
         </Col>
         <Col md={4}>
