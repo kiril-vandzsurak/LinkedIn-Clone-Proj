@@ -7,6 +7,7 @@ export const EXP_TO_EDIT = "EDIT_EXPERIENCE_DETAILS";
 export const EDIT_PROFILE = "EDIT_PROFILE";
 export const GET_POST_DATA = "GET_POST_DATA";
 export const GET_EXPERIENCE_DETAILS_OTHER = "GET_EXPERIENCE_DETAILS_OTHER";
+export const MAKE_POST = "MAKE_POST";
 
 export const getPostsAction = () => {
   const options = {
@@ -334,6 +335,34 @@ export const editExperienceAction = (postid, userid, data) => {
         console.log("ok!");
       } else {
         console.log("error");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const makePostAction = (data, userid) => {
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+      "Content-Type": "application/json",
+    },
+  };
+  return async (dispatch, useState) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/",
+        options
+      );
+      if (response.ok) {
+        dispatch(getPostsAction(userid));
+        console.log("Posted Successfully!");
+      } else {
+        console.log("Error posting");
       }
     } catch (err) {
       console.log(err);

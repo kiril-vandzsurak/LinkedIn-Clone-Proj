@@ -9,7 +9,7 @@ export default function RightHompageSidebar() {
   const profileDetails = useSelector((state) => state.profile.profilename);
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card >
         <Card.Body>
           <Card.Title className="d-flex justify-content-between">
             <h2 className="mb-0">LinkedIn News</h2>

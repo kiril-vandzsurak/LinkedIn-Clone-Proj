@@ -49,7 +49,7 @@ const Postcard = (props) => {
               <span>
                 <AiOutlineLike />
               </span>
-              <spa>Like</spa>
+              <span>Like</span>
             </div>
             <div className="comment-icon btn">
               <span>

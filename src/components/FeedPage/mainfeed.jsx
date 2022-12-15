@@ -8,12 +8,12 @@ const Mainfeed = () => {
   return (
     <Container className="main-con">
       <Row className="main-con-row">
-        <Col md={2} className="align-content-center">
+        <Col md={2}>
           <Container className="">
             <MainPageProfile />
           </Container>
         </Col>
-        <Col md={4}>
+        <Col md={4} className="mx-2">
           <AddingPost />
           <ShowPosts />
         </Col>

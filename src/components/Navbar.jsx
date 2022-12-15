@@ -17,6 +17,7 @@ import {
 // import img from "./avatar-1.jpg";
 import { useEffect, useState } from "react";
 import EachProfile from "./EachProfile";
+import { Link } from "react-router-dom";
 
 const NavbarLinked = () => {
   const [profiles, setProfiles] = useState([]);
@@ -58,7 +59,11 @@ const NavbarLinked = () => {
     <>
       <Navbar bg="light" expand="lg" style={{ padding: "0px", height: "48px" }}>
         <Container>
-          <BsLinkedin style={{ fontSize: "35px", color: "#0A66C2" }} />
+          <Link to="/">
+            <div>
+              <BsLinkedin style={{ fontSize: "35px", color: "#0A66C2" }} />
+            </div>
+          </Link>
           <div className="d-flex flex-column">
             <InputGroup className="ml-2" style={{ width: "350px" }}>
               {/* <ImSearch /> */}
