@@ -2,7 +2,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Postcard = (props) => {
-  if (props.data.user !== null ) {
+  if (props.data.user !== null) {
     return (
       <>
         <Container className="post-card">
@@ -10,7 +10,13 @@ const Postcard = (props) => {
             <div className="d-flex">
               <div className="comment-img-con">
                 <img
-                  src={props.data.user.image ? props.data.user.image : ""}
+                  src={
+                    props.data.user.image ? (
+                      props.data.user.image
+                    ) : (
+                      <img src="shaye.jpg" alt="" />
+                    )
+                  }
                   alt="user"
                 />
               </div>
@@ -20,7 +26,9 @@ const Postcard = (props) => {
                     style={{ fontSize: "0.8rem" }}
                     className="font-weight-bold"
                   >
-                    <Link to={"/profile/" + props.data.user._id}>{props.data.user.name}{" "}{props.data.user.surname}</Link>
+                    <Link to={"/profile/" + props.data.user._id}>
+                      {props.data.user.name} {props.data.user.surname}
+                    </Link>
                   </span>
                 </div>
                 <div className="comment-subheader">
