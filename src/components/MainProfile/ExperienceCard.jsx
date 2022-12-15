@@ -15,14 +15,11 @@ const ExperienceCard = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [details, setDetails] = useState([])
-
+  const [details, setDetails] = useState([]);
 
   const formatDate = (d) => new Date(d).toISOString().substring(0, 10);
 
-  useEffect(() => {
-
-  }, [])
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -32,7 +29,7 @@ const ExperienceCard = (props) => {
             <p>
               <span className="font-weight-bold" style={{ fontSize: "25px" }}>
                 {props.data.role}
-                <BiPencil onClick={handleShow} className="experice-icon" />
+                {userID ? <BiPencil onClick={handleShow} className="experice-icon" /> : ""}
                 <br />
               </span>
               <span style={{ fontSize: "18px" }}>
@@ -47,14 +44,18 @@ const ExperienceCard = (props) => {
             <p>{props.data.description}</p>
           </Card.Body>
           <Card.Footer>
-            <Button
-              variant="danger"
-              onClick={() => {
-                dispatch(deleteExperienceAction(props.data._id, userID));
-              }}
-            >
-              Remove
-            </Button>
+            {userID ? (
+              <Button
+                variant="danger"
+                onClick={() => {
+                  dispatch(deleteExperienceAction(props.data._id, userID));
+                }}
+              >
+                Remove
+              </Button>
+            ) : (
+              ""
+            )}
           </Card.Footer>
         </Card>
       </Container>
@@ -75,7 +76,7 @@ const ExperienceCard = (props) => {
             {/* role, company, startDate, endDate, description, area */}
             <Form
               onSubmit={(e) => {
-                e.preventDefault()
+                e.preventDefault();
                 handleClose();
               }}
             >
@@ -105,18 +106,14 @@ const ExperienceCard = (props) => {
 
               <Form.Group>
                 <Form.Label>Start Date</Form.Label>
-                <Form.Control
-                  type="date"
-                />
+                <Form.Control type="date" />
               </Form.Group>
 
               <Form.Group>
                 <Form.Label>
                   End Date (Leave blank if you still work here)
                 </Form.Label>
-                <Form.Control
-                  type="date"
-                />
+                <Form.Control type="date" />
               </Form.Group>
 
               <Form.Group>
@@ -128,7 +125,11 @@ const ExperienceCard = (props) => {
                 />
                 <hr />
                 <div className="mt-3 d-flex flex-row-reverse">
-                  <Button onClick={handleClose} variant="secondary" className="ml-2">
+                  <Button
+                    onClick={handleClose}
+                    variant="secondary"
+                    className="ml-2"
+                  >
                     Close
                   </Button>
                   <Button variant="primary" type="submit">
@@ -140,7 +141,6 @@ const ExperienceCard = (props) => {
           </Modal.Body>
         </Modal>
       </>
-      
     </>
   );
 };

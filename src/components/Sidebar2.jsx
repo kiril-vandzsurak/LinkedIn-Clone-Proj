@@ -52,7 +52,7 @@ const Sidebar2 = () => {
       <h4 className="mt-3">People you may know</h4>
       <ListGroup variant="flush" className="">
         {show && people.map((i)=> (
-          <PeopleCards key={i._id} name={i.name} location={i.area} title={i.title} image={i.image}/>
+          <PeopleCards key={i._id} userid={i._id} name={i.name} location={i.area} title={i.title} image={i.image}/>
         ))}
       </ListGroup>
     </>

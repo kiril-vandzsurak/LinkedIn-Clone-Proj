@@ -8,7 +8,7 @@ import ResourceSection from "./ResourceSection";
 import { useDispatch, useSelector } from "react-redux";
 import { getOtherProfile } from "../redux/actions";
 import Activity from "./Activity";
-import Experience from "./Experience";
+import ExperienceOther from "./ExperienceOther";
 import SkillsComponent from "./SkillsComponent";
 import Interest from "./Interests";
 import ModalComponent from "./ModalComponent";
@@ -91,7 +91,7 @@ export default function MainProfileUser() {
         <Activity />
       </div>
       <div className="section-4">
-        <Experience />
+        <ExperienceOther />
       </div>
       <div className="section-4">
         <SkillsComponent />
