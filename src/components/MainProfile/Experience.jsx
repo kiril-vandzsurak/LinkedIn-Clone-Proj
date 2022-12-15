@@ -29,7 +29,7 @@ export default function Experience() {
     setTimeout(() => {
       setToShow(true);
     }, 300);
-  }, [userID]);
+  }, [userID], [experiences]);
 
   const [experience, setExperience] = useState({
     role: "",
@@ -83,7 +83,7 @@ export default function Experience() {
               <ListGroup variant="flush">
                 {experiences &&
                   experiences.map((i) => (
-                    <ExperienceCard data={i} key={i._id} />
+                    <ExperienceCard data={i} id={i._id} key={i._id} />
                   ))}
               </ListGroup>
               {/* <h2 className="mb-0">Junior Business Analyst</h2>

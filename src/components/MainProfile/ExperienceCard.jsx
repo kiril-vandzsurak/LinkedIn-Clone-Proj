@@ -1,8 +1,9 @@
 import { Container, Card, Button, Modal, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteExperienceAction, editExperienceAction } from "../redux/actions";
+import { deleteExperienceAction, editExperienceAction, getExperienceEdit } from "../redux/actions";
 import { BiPencil } from "react-icons/bi";
 import { useEffect, useState } from "react";
+import EditModal from "./EditExperienceModal";
 
 const ExperienceCard = (props) => {
   const startdate = props.data.startDate;
@@ -11,9 +12,13 @@ const ExperienceCard = (props) => {
   const user = useSelector((state) => state.profile.profilename);
   const userID = user._id;
   const [show, setShow] = useState(false);
+  const [modal, setModal] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const closeModal = () => setModal(false)
+  const showModal = () => setModal(true)
 
   const [details, setDetails] = useState([]);
 
@@ -29,7 +34,14 @@ const ExperienceCard = (props) => {
             <p>
               <span className="font-weight-bold" style={{ fontSize: "25px" }}>
                 {props.data.role}
-                {userID ? <BiPencil onClick={handleShow} className="experice-icon" /> : ""}
+                {userID ? (
+                  <BiPencil onClick={() => {
+                    showModal()
+                    dispatch(getExperienceEdit(props.data._id, userID))
+                  }} className="experice-icon" />
+                ) : (
+                  ""
+                )}
                 <br />
               </span>
               <span style={{ fontSize: "18px" }}>
@@ -140,6 +152,7 @@ const ExperienceCard = (props) => {
             </Form>
           </Modal.Body>
         </Modal>
+        <EditModal show={modal} hide={closeModal} />
       </>
     </>
   );

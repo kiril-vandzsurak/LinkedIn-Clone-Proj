@@ -30,7 +30,6 @@ export default function MainProfileUser() {
       <div className="section-1">
         <Card className="section-profile">
           <div className="top-side">
-            <div></div>
             <div className="take-picture mt-4 mr-4">
               <BsFillCameraFill className="take-picture-icon" />
             </div>
@@ -51,7 +50,7 @@ export default function MainProfileUser() {
                   </h4>
 
                   <p className="mb-0">{profileDetails.title}</p>
-                  <p className="mb-0">Sytems & Networks</p>
+                  <p className="mb-0"></p>
                   <p className="mb-0">
                     {profileDetails.area}.<a href="#">Contact Info</a>
                   </p>

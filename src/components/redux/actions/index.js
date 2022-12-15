@@ -6,7 +6,7 @@ export const GET_EXPERIENCE_DETAILS = "GET_EXPERIENCE_DETAILS";
 export const EXP_TO_EDIT = "EDIT_EXPERIENCE_DETAILS";
 export const EDIT_PROFILE = "EDIT_PROFILE";
 export const GET_POST_DATA = "GET_POST_DATA";
-export const GET_EXPERIENCE_DETAILS_OTHER = "GET_EXPERIENCE_DETAILS_OTHER"
+export const GET_EXPERIENCE_DETAILS_OTHER = "GET_EXPERIENCE_DETAILS_OTHER";
 
 export const getPostsAction = () => {
   const options = {
@@ -26,9 +26,9 @@ export const getPostsAction = () => {
       if (response.ok) {
         dispatch({
           type: GET_POST_DATA,
-          payload: fetchedData,
+          payload: fetchedData.reverse(),
         });
-        console.log(fetchedData)
+        console.log(fetchedData);
       } else {
         console.log("There was an error fetching posts");
       }
@@ -274,8 +274,8 @@ export const deleteExperienceAction = (postid, userid) => {
         optionsDelete
       );
       if (response.ok) {
-        console.log("Deleted successfully!");
         dispatch(getExperienceAction(userid));
+        console.log("Deleted successfully!");
       } else {
         console.log("Could not delete");
       }
@@ -298,7 +298,7 @@ export const getExperienceEdit = (postid, userid) => {
       if (response.ok) {
         let fetchedData = await response.json();
         dispatch({
-          type: GET_EXPERIENCE_DETAILS,
+          type: EXP_TO_EDIT,
           payload: fetchedData,
         });
       } else {
@@ -330,6 +330,7 @@ export const editExperienceAction = (postid, userid, data) => {
         optionsEdit
       );
       if (response.ok) {
+        dispatch(getExperienceAction(userid));
         console.log("ok!");
       } else {
         console.log("error");
