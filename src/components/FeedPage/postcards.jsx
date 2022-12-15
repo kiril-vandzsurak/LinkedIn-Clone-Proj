@@ -1,5 +1,9 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AiOutlineLike } from "react-icons/ai";
+import { BsChatText } from "react-icons/bs";
+import { BiRepost } from "react-icons/bi";
+import { TbSend } from "react-icons/tb";
 
 const Postcard = (props) => {
   if (props.data.user !== null) {
@@ -10,13 +14,7 @@ const Postcard = (props) => {
             <div className="d-flex">
               <div className="comment-img-con">
                 <img
-                  src={
-                    props.data.user.image ? (
-                      props.data.user.image
-                    ) : (
-                      <img src="shaye.jpg" alt="" />
-                    )
-                  }
+                  src={props.data.user.image ? props.data.user.image : ""}
                   alt="user"
                 />
               </div>
@@ -41,6 +39,36 @@ const Postcard = (props) => {
           </Row>
           <div className="mt-4">
             <p>{props.data.text}</p>
+            <span>
+              <img src="image3.jpg" className="comment-image" />
+            </span>
+          </div>
+          <hr />
+          <div className="icons-div-comment mt-3">
+            <div className="comment-icon btn">
+              <span>
+                <AiOutlineLike />
+              </span>
+              <spa>Like</spa>
+            </div>
+            <div className="comment-icon btn">
+              <span>
+                <BsChatText />
+              </span>
+              <span>Comment</span>
+            </div>
+            <div className="comment-icon btn">
+              <span>
+                <BiRepost />
+              </span>
+              <span>Repost</span>
+            </div>
+            <div className="comment-icon btn">
+              <span>
+                <TbSend />
+              </span>
+              <span>Send</span>
+            </div>
           </div>
         </Container>
       </>
