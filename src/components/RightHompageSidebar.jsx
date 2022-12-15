@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { BsInfoSquareFill } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
-import "../CssFolder/homepage.css"
+import "../CssFolder/homepage.css";
 import { useSelector } from "react-redux";
 
 export default function RightHompageSidebar() {
@@ -75,7 +75,7 @@ export default function RightHompageSidebar() {
             </div>
             <Card.Img
               variant="top"
-              src="homeprofile.png"
+              src="image3.jpg"
               className="righthome-imag"
             />
           </div>
