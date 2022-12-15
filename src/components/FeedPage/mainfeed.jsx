@@ -13,7 +13,7 @@ const Mainfeed = () => {
             <MainPageProfile />
           </Container>
         </Col>
-        <Col md={4} className="mx-2">
+        <Col md={4} className="mx-5">
           <AddingPost />
           <ShowPosts />
         </Col>
