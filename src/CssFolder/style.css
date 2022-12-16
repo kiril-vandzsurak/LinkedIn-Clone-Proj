@@ -447,11 +447,11 @@ html {
   text-overflow: ellipsis;
 }
 
-.location-text{
+.location-text {
   margin-top: 0.5rem;
   overflow: hidden;
   max-width: 90%;
-  line-height:1.6rem;
+  line-height: 1.6rem;
   max-height: 2rem;
   text-overflow: ellipsis;
 }

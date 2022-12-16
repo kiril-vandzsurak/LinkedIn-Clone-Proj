@@ -2,11 +2,15 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
-import { AiFillYoutube } from "react-icons/ai";
-import { HiOutlineDocumentChartBar } from "react-icons/hi2";
-import { useEffect } from "react";
-import { BsThreeDots } from "react-icons/bs";
+import { GoGlobe } from "react-icons/go";
+import { RxVideo } from "react-icons/rx";
+import { GrDocumentText } from "react-icons/gr";
+import { MdOutlineInsertPhoto } from "react-icons/md";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { BsFillBagDashFill } from "react-icons/bs";
+import { FaPoll } from "react-icons/fa";
+import { GiGlassCelebration } from "react-icons/gi";
+import { BsChatText } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { makePostAction } from "../redux/actions";
 
@@ -39,7 +43,7 @@ const AddingPost = () => {
         style={{
           width: "100%",
           height: "120px",
-          backgroundColor: "lightgrey",
+          backgroundColor: "white",
           marginTop: "20px",
           borderRadius: "0.8rem",
         }}
@@ -58,6 +62,9 @@ const AddingPost = () => {
               width: "350px",
               marginTop: "10px",
               border: "1px lightgrey solid",
+              backgroundColor: "white",
+              color: "#5E5E5E",
+              bordercolor: "5E5E5E",
             }}
           >
             What do you want to post?
@@ -67,26 +74,22 @@ const AddingPost = () => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title style={{ fontSize: "20px" }}>Create a post</Modal.Title>
+          <Modal.Title>Create a post</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{ padding: "0px" }}>
-          <div className="d-flex">
-            <div>
-              {" "}
-              <img src={user.image} alt="profileimage" className="post-pic" />
+        <Modal.Body>
+          <div className="activity-modal">
+            <div className="activity-modal-image">
+              <img src={user.image} alt="profilepicture" />
             </div>
-            <div className="d-flex flex-column justify-content-center">
-              <p style={{ margin: "0px" }}>
-                {user.name} {user.surname}
-              </p>
-              <Button
-                style={{
-                  borderRadius: "50px",
-                  height: "38px",
-                  width: "106px",
-                }}
-              >
+            <div>
+              <h4 className="mb-0">
+                {user.name}
+                {user.surname}
+              </h4>
+              <Button className="activity-modal-btn">
+                <GoGlobe />
                 Anyone
+                <RiArrowDropDownLine />
               </Button>
             </div>
           </div>
@@ -96,98 +99,45 @@ const AddingPost = () => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Control
+                className="activity-text mt-3"
                 as="textarea"
                 rows={3}
                 placeholder="What do you want to talk about?"
                 onChange={(e) => onChangeHandler(e.target.value, setPost)}
-                style={{ border: "none" }}
               />
             </Form.Group>
           </Form>
-          <div className="d-flex justify-content-between">
-            <div className="d-flex align-items-center">
-              <Button
-                variant="light"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                }}
-              >
-                <MdOutlinePhotoSizeSelectActual style={{ fontSize: "20px" }} />
-              </Button>
-              <Button
-                variant="light"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                }}
-              >
-                <AiFillYoutube style={{ fontSize: "20px" }} />
-              </Button>
-              <Button
-                variant="light"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                }}
-              >
-                <HiOutlineDocumentChartBar style={{ fontSize: "20px" }} />
-              </Button>
-              <Button
-                variant="light"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                }}
-              >
-                <BsThreeDots style={{ fontSize: "20px" }} />
-              </Button>
-              <Button
-                variant="light"
-                style={{
-                  borderRadius: "50px",
-                  height: "30px",
-                  width: "80px",
-                  fontSize: "10px",
-                  marginLeft: "15px",
-                }}
-              >
+        </Modal.Body>
+        <Modal.Footer className="activity-modal-footer">
+          <div className="activity-footer">
+            <MdOutlineInsertPhoto className="activity-footer-icons" />
+            <RxVideo className="activity-footer-icons" />
+            <GrDocumentText className="activity-footer-icons" />
+            <GiGlassCelebration className="activity-footer-icons" />
+            <BsFillBagDashFill className="activity-footer-icons" />
+            <FaPoll className="activity-footer-icons" />
+            <Button className="icon-btn">...</Button>|
+          </div>
+          <div className="activity-footer">
+            <div>
+              <Button className="activity-footer-btn">
+                <BsChatText />
                 Anyone
               </Button>
             </div>
-            <div className="d-flex align-items-center">
+            <div>
               <Button
-                variant="light"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                }}
-              >
-                <BsThreeDots style={{ fontSize: "20px" }} />
-              </Button>
-              <Button
-                variant="primary"
-                type="submit"
+                className="btn-1"
                 onClick={(e) => {
-                  handleSubmit(e);
                   handleClose();
-                }}
-                style={{
-                  borderRadius: "50px",
-                  fontSize: "15px",
-                  fontWeight: "bold",
+                  handleSubmit(e);
                 }}
               >
-                Post
+                Save
               </Button>
             </div>
           </div>
-        </Modal.Body>
+        </Modal.Footer>
       </Modal>
     </div>
   );
