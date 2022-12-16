@@ -441,9 +441,18 @@ html {
 
 .title-text {
   overflow: hidden;
-  width: 90%;
-  line-height: 0.8em;
-  max-height: 3.6em;
+  max-width: 15rem;
+  line-height: 0.8rem;
+  max-height: 1.6rem;
+  text-overflow: ellipsis;
+}
+
+.location-text{
+  margin-top: 0.5rem;
+  overflow: hidden;
+  max-width: 90%;
+  line-height:1.6rem;
+  max-height: 2rem;
   text-overflow: ellipsis;
 }
 
