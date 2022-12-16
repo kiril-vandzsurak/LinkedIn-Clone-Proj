@@ -13,7 +13,7 @@ export default function SkillsComponent() {
             </div>
             <div className="experience-add">
               <div>
-                <Button className="btn-2">Demonstrat skills</Button>
+                <Button className="btn-2">Demonstrate skills</Button>
               </div>
               <div>
                 <AiOutlinePlus className="experice-icon" />

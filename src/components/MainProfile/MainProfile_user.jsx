@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-import { BsFillCameraFill } from "react-icons/bs";
 import { SiCampaignmonitor } from "react-icons/si";
 import SecondSection from "./SecondSection";
 import AnalyticsSection from "./AnalyticsSection";
@@ -30,9 +29,9 @@ export default function MainProfileUser() {
       <div className="section-1">
         <Card className="section-profile">
           <div className="top-side">
-            <div className="take-picture mt-4 mr-4">
+            {/* <div className="take-picture mt-4 mr-4">
               <BsFillCameraFill className="take-picture-icon" />
-            </div>
+            </div> */}
           </div>
           <Card.Body>
             <div className="profile-info">
@@ -45,7 +44,7 @@ export default function MainProfileUser() {
               <div className="profile-name d-flex">
                 <div className="profile-details">
                   <h4 className="mb-0">
-                    {profileDetails.name}
+                    {profileDetails.name}{" "}
                     {profileDetails.surname}
                   </h4>
 

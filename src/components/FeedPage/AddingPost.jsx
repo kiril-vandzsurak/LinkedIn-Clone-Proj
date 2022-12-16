@@ -174,6 +174,7 @@ const AddingPost = () => {
                 variant="primary"
                 type="submit"
                 onClick={(e) => {
+                  alert("Post successfully added")
                   handleSubmit(e);
                   handleClose();
                 }}

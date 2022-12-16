@@ -166,6 +166,7 @@ const NavbarLinked = () => {
               overflow: "auto",
               top: "4px",
               left: "121px",
+              zIndex: "20"
             }}
             className="d-flex flex-column align-items-start position-relative search"
           >

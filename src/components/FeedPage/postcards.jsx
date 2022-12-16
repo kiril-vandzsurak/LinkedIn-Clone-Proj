@@ -72,6 +72,7 @@ const Postcard = (props) => {
                     <Dropdown.Item
                       onClick={() => {
                         dispatch(deletePostAction(props.data._id));
+                        alert("Post deleted!");
                       }}
                     >
                       <BsFillTrashFill /> Delete Post
