@@ -38,17 +38,17 @@ const AddingPost = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <div className="d-flex justify-content-center">
-      <div
-        style={{
-          width: "100%",
-          height: "120px",
-          backgroundColor: "white",
-          marginTop: "20px",
-          borderRadius: "0.8rem",
-        }}
-        className="d-flex"
-      >
+    <div
+      style={{
+        width: "100%",
+        height: "120px",
+        backgroundColor: "white",
+        marginTop: "20px",
+        borderRadius: "0.8rem",
+        display: "flex",
+      }}
+    >
+      <div className="post-card-homepage">
         <div>
           {" "}
           <img src={user.image} alt="profileimage" className="post-pic-main" />

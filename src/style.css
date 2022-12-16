@@ -451,33 +451,35 @@ a:hover {
   margin-top: 0.5rem;
 }
 
-.gold{
+.gold {
   color: rgb(230, 174, 53);
 }
 
-#refresh{
+#refresh {
   font-weight: bold;
   color: rgb(8, 117, 243);
 }
 
-#refresh:hover{
+#refresh:hover {
   cursor: pointer;
 }
 
-
-#date{
+#date {
   font-size: 0.8rem;
   padding-bottom: 0.2rem;
   border-bottom: 1px solid darkgray;
 }
 
-.contact:hover{
+.contact:hover {
   cursor: pointer;
 }
 
-#up-btn{
+#up-btn {
   border: none;
   color: rgb(8, 117, 243);
   background: none;
   font-size: 2em;
+}
+.post-card-homepage {
+  display: flex;
 }
