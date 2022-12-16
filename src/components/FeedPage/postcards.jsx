@@ -15,8 +15,17 @@ import { TbSend } from "react-icons/tb";
 import { deletePostAction } from "../redux/actions";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
+import { BsPencilFill } from "react-icons/bs";
+import { BsFillTrashFill } from "react-icons/bs";
+import { useState } from "react";
+import PostEditModal from "./PostEditModal";
 
 const Postcard = (props) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.profile.profilename);
   const userID = user._id;
@@ -34,7 +43,7 @@ const Postcard = (props) => {
                 />
               </div>
               <Col>
-                <Row class="ml-1">
+                <Row className="ml-1">
                   <div className="comment-header">
                     <span
                       style={{ fontSize: "0.8rem" }}
@@ -65,7 +74,10 @@ const Postcard = (props) => {
                         dispatch(deletePostAction(props.data._id));
                       }}
                     >
-                      Delete Post
+                      <BsFillTrashFill /> Delete Post
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={handleShow}>
+                      <BsPencilFill /> Edit Post
                     </Dropdown.Item>
                   </DropdownButton>
                 ) : (
@@ -82,7 +94,11 @@ const Postcard = (props) => {
             <Row className="justify-content-center">
               <span>
                 <img
-                  src={props.data.image ? props.data.image : "https://picsum.photos/400/400"}
+                  src={
+                    props.data.image
+                      ? props.data.image
+                      : "https://picsum.photos/400/400"
+                  }
                   className="comment-image img-fluid"
                 />
               </span>
@@ -116,6 +132,7 @@ const Postcard = (props) => {
             </div>
           </div>
         </Container>
+        <PostEditModal show={show} close={handleClose} post={props.data} />
       </>
     );
   }

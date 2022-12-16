@@ -20,7 +20,7 @@ const PeopleCards = (props) => {
                   <div className="title-text">
                     <Link to={"/profile/" + props.userid}><span id="name-text">{props.name} • 1st</span></Link>
                   </div>
-                  <span> {props.location}</span>
+                  <div className="location-text"> {props.location}</div>
               </Container>
             </Container>
           </Col>
