@@ -10,8 +10,16 @@ import { Button, Container, Spinner, Row } from "react-bootstrap";
 const ShowPosts = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
-  const [newPosts, setPosts] = useState(posts);
   const loading = useSelector((state) => state.loading.loading);
+
+
+  const[numToShow, setNumToShow] = useState(5)
+  const newPosts = posts.slice(0, numToShow)
+
+  const showMorePosts = (e) => {
+    const num = 10
+    setNumToShow(numToShow + num)
+  }
 
 
 
@@ -28,7 +36,9 @@ const ShowPosts = () => {
           </Row>
         )}
         {posts &&
-          posts.slice(0, 50).map((i) => <Postcard data={i} key={i._id} />)}
+          newPosts.map((i) => <Postcard data={i} key={i._id} />)}
+
+          <Row className="justify-content-center"><Button onClick={showMorePosts} variant="outline-primary">Show More</Button></Row>
       </div>
     </>
   );
