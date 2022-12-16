@@ -185,6 +185,10 @@ body {
   top: 70px;
 }
 
+.profile-picture:hover{
+  cursor: pointer;
+}
+
 .profile-picture img {
   border-radius: 50%;
   width: 100px;
