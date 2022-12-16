@@ -5,6 +5,8 @@ import {
   Container,
   InputGroup,
   Form,
+  Row,
+  Col,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BsLinkedin, BsFillBriefcaseFill } from "react-icons/bs";
@@ -17,11 +19,14 @@ import {
 // import img from "./avatar-1.jpg";
 import { useEffect, useState } from "react";
 import EachProfile from "./EachProfile";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavbarLinked = () => {
   const [profiles, setProfiles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [showRes, setShowRes] = useState(false);
+  const user = useSelector((state) => state.profile.profilename);
 
   useEffect(() => {
     saveData();
@@ -58,7 +63,11 @@ const NavbarLinked = () => {
     <>
       <Navbar bg="light" expand="lg" style={{ padding: "0px", height: "48px" }}>
         <Container>
-          <BsLinkedin style={{ fontSize: "35px", color: "#0A66C2" }} />
+          <Link to="/">
+            <div>
+              <BsLinkedin style={{ fontSize: "35px", color: "#0A66C2" }} />
+            </div>
+          </Link>
           <div className="d-flex flex-column">
             <InputGroup className="ml-2" style={{ width: "350px" }}>
               {/* <ImSearch /> */}
@@ -76,64 +85,67 @@ const NavbarLinked = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="#home" className="d-flex flex-column">
-                <div>
-                  <AiFillHome style={{ fontSize: "20px" }} />
-                </div>
-                <div style={{ fontSize: "13px" }}>Home</div>
-              </Nav.Link>
-              <Nav.Link href="#myNetwork" className="d-flex flex-column">
-                <div>
-                  <RiGroupFill style={{ fontSize: "20px" }} />
-                </div>
-                <div style={{ fontSize: "13px" }}>My Network</div>
-              </Nav.Link>
-              <Nav.Link href="#jobs" className="d-flex flex-column">
-                <div>
-                  <BsFillBriefcaseFill style={{ fontSize: "20px" }} />
-                </div>
-                <div style={{ fontSize: "13px" }}>Jobs</div>
-              </Nav.Link>
-              <Nav.Link href="#messaging" className="d-flex flex-column">
-                <div>
-                  <RiMessage2Fill style={{ fontSize: "20px" }} />
-                </div>
-                <div style={{ fontSize: "13px" }}>Messaging</div>
-              </Nav.Link>
-              <Nav.Link href="#notifications" className="d-flex flex-column">
-                <div>
-                  <RiNotification3Fill style={{ fontSize: "20px" }} />
-                </div>
-                <div style={{ fontSize: "13px" }}>Notifications</div>
-              </Nav.Link>
+              <Row>
+                <Col>
+                  <Nav.Link href="#home" className="d-flex flex-column">
+                    <div>
+                      <AiFillHome style={{ fontSize: "20px" }} />
+                    </div>
+                    <div style={{ fontSize: "13px" }}>Home</div>
+                  </Nav.Link>
+                </Col>
+                <Nav.Link href="#myNetwork" className="d-flex flex-column">
+                  <div>
+                    <RiGroupFill style={{ fontSize: "20px" }} />
+                  </div>
+                  <div style={{ fontSize: "13px" }}>My Network</div>
+                </Nav.Link>
+                <Nav.Link href="#jobs" className="d-flex flex-column">
+                  <div>
+                    <BsFillBriefcaseFill style={{ fontSize: "20px" }} />
+                  </div>
+                  <div style={{ fontSize: "13px" }}>Jobs</div>
+                </Nav.Link>
+                <Nav.Link href="#messaging" className="d-flex flex-column">
+                  <div>
+                    <RiMessage2Fill style={{ fontSize: "20px" }} />
+                  </div>
+                  <div style={{ fontSize: "13px" }}>Messaging</div>
+                </Nav.Link>
+                <Nav.Link href="#notifications" className="d-flex flex-column">
+                  <div>
+                    <RiNotification3Fill style={{ fontSize: "20px" }} />
+                  </div>
+                  <div style={{ fontSize: "13px" }}>Notifications</div>
+                </Nav.Link>
+              </Row>
 
-              <div className="d-flex flex-column">
+              <div className="d-flex flex-column ml-2">
                 <img
-                  src=""
+                  src={user ? user.image : ""}
                   alt="..."
                   style={{
                     width: "22px",
                     height: "22px",
                     borderRadius: "50%",
                     marginTop: "11px",
+                    position: "absolute",
+                    left: "94.8rem",
                   }}
                   className="align-self-center"
                 />
+
                 <NavDropdown
                   title="Me"
                   id="basic-nav-dropdown"
-                  style={{ fontSize: "13px" }}
+                  style={{
+                    fontSize: "13px",
+                    position: "absolute",
+                    bottom: "-6px",
+                  }}
                 >
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
+                  <NavDropdown.Item>
+                    <Link to="/profile/me">My Profile</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
               </div>

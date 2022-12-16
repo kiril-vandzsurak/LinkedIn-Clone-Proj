@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import Postcard from "./postcards";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Button, Container, Spinner } from "react-bootstrap";
-import { useMemo } from "react";
 
 const ShowPosts = () => {
   const dispatch = useDispatch();
@@ -35,40 +34,10 @@ const ShowPosts = () => {
   }, []);
 
 
-  // const [loadedPosts, setLoadedPosts] = useState(posts);
-  // const [newPosts, setNewPosts] = useState([]);
-
-  // const perPage = 10;
-  // const [lastObjectPosition, setLastObjectPosition] = useState(0);
-
-  // const loadPosts = () => {
-  //   setNewPosts((current) => {
-  //     return [
-  //       ...current,
-  //       loadedPosts.slice(lastObjectPosition, lastObjectPosition + perPage),
-  //     ];
-  //   });
-  //   setLastObjectPosition((currentValue) => {
-  //     return currentValue + perPage;
-  //   });
-  // };
-
   return (
     <>
       <div>
-        {/* {itemsToShow.length ? itemsToShow : <Spinner animation="border" />}
-        <Button variant="info" onClick={showMore}>
-          Show More
-        </Button> */}
-        {/* <InfiniteScroll
-          pageStart={0}
-          loadMore={loadPosts}
-          dataLength={posts.length}
-          hasMore={lastObjectPosition < loadedPosts.length}
-          loader={<Spinner animation="border" />}
-        > */}
         {posts && posts.slice(0,50).map((i) => <Postcard data={i} key={i._id}/>)}
-        {/* </InfiniteScroll> */}
       </div>
     </>
   );

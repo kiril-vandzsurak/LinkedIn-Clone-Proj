@@ -51,12 +51,12 @@ export default function MainPageProfile() {
           <ListGroup.Item>
             <h3 className="homepage-h3">Access exclusive tools & insights</h3>
             <div className="d-flex">
-              <GiGoldBar className="icons" />
+              <GiGoldBar className="icons gold" />
               <a href="#">
                 <span className="underline">
-                  Get Hired Fast,Try.
+                  Get Hired Fast, try
                   <br />
-                  Premimu Free
+                  Premium Free
                 </span>
               </a>
             </div>
