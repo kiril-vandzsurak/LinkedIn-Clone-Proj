@@ -23,7 +23,7 @@ const UploadModal = () => {
 
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/6396f964c96dfb001521a5c0/image",
+        "https://striveschool-api.herokuapp.com/api/profile/6396f964c96dfb001521a5c0/picture",
         options
       );
       if (response.ok) {
