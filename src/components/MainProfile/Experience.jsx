@@ -6,6 +6,7 @@ import {
   Form,
   ListGroup,
   Container,
+  Row,
 } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiPencil, BiBuildings } from "react-icons/bi";
@@ -24,12 +25,16 @@ export default function Experience() {
   const userID = user._id;
   const experiences = useSelector((state) => state.profile.experience);
 
-  useEffect(() => {
-    dispatch(getExperienceAction(userID));
-    setTimeout(() => {
-      setToShow(true);
-    }, 300);
-  }, [userID], [experiences]);
+  useEffect(
+    () => {
+      dispatch(getExperienceAction(userID));
+      setTimeout(() => {
+        setToShow(true);
+      }, 300);
+    },
+    [userID],
+    [experiences]
+  );
 
   const [experience, setExperience] = useState({
     role: "",
@@ -73,9 +78,12 @@ export default function Experience() {
             </div>
           </Card.Title>
           <div className="experience-note">
-            <div className="experience">
-              <BiBuildings className="experice-icon" />
-            </div>
+            <Row>
+              <div className="experience">
+                <BiBuildings className="experice-icon" />
+              </div>
+            </Row>
+
             <Container fluid>
               <ListGroup variant="flush">
                 {experiences &&

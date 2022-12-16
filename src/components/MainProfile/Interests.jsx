@@ -19,7 +19,7 @@ export default function Interest() {
             <div className="interested-companies">
               <div className="companies-info mb-2">
                 <div>
-                  <img src="1635155236575.jpeg" alt="companies" />
+                  <img src="http://placekitten.com/200/200" alt="companies" />
                 </div>
                 <div className="company-name-follower">
                   <h3 className="mb-0">3Squared</h3>
@@ -32,7 +32,7 @@ export default function Interest() {
               </div>
               <div className="companies-info mb-2">
                 <div>
-                  <img src="icon-icon.jpeg" alt="companies" />
+                  <img src="http://placekitten.com/200/200" alt="companies" />
                 </div>
                 <div className="company-name-follower">
                   <h3 className="mb-0">PRA Health Sciences</h3>

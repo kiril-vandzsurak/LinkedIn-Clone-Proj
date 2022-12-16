@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button, Form } from "react-bootstrap";
-import { editPostAction } from "../redux/actions";
+import { editPostAction, getPostsAction } from "../redux/actions";
 
 const PostEditModal = (props) => {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const PostEditModal = (props) => {
       );
       if (response.ok) {
         console.log(response);
-        window.location.reload();
+        dispatch(getPostsAction());
         alert("Image Uploaded Successfully");
       }
     } catch (error) {
