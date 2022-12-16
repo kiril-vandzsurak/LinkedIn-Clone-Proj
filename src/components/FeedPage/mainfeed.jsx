@@ -21,9 +21,7 @@ const Mainfeed = () => {
     <Container className="main-con">
       <Row className="main-con-row">
         <Col md={2}>
-          <Container className="">
             <MainPageProfile />
-          </Container>
         </Col>
         <Col md={4} className="mx-5">
           <AddingPost />
@@ -45,9 +43,6 @@ const Mainfeed = () => {
         <Col md={2}>
           <RightHompageSidebar />
         </Col>
-      </Row>
-      <Row>
-        <Footer />
       </Row>
     </Container>
   );
