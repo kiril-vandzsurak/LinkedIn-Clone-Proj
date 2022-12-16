@@ -647,3 +647,47 @@ h3 {
   width: 50px;
   height: 60px;
 }
+.moda-body {
+  background-color: #1d2226;
+}
+.profile-image-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icons-div-modal {
+  display: flex;
+  font-size: 1.3rem;
+  gap: 30px;
+  padding: 15px;
+}
+.uplaod-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.modal-body-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.modal-icon-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn {
+  width: 130px;
+  height: 40px;
+  border-radius: 30px;
+  color: white;
+  border: 1px solid #0c66c2;
+  background-color: #0c66c2;
+}
+.second-modal-button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  text-align: center;
+}

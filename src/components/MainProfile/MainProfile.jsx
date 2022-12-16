@@ -13,6 +13,7 @@ import SkillsComponent from "./SkillsComponent";
 import Interest from "./Interests";
 import ModalComponent from "./ModalComponent";
 import JobPreferencesModal from "./JobPreferencesModal";
+import FirstModal from "../UploadPhoto/FirstModal";
 export default function MainProfile() {
   const dispatch = useDispatch();
   const profileDetails = useSelector((state) => state.profile.profilename);
@@ -33,9 +34,7 @@ export default function MainProfile() {
           </div>
           <Card.Body>
             <div className="profile-info">
-              <div className="profile-picture">
-                <img src={profileDetails.image} alt="profilepicture" />
-              </div>
+              <FirstModal />
               <div className="profile-panic">
                 <ModalComponent />
               </div>
