@@ -3,7 +3,6 @@ import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 import { MdOutlinePhotoCamera } from "react-icons/md";
 import { Button } from "react-bootstrap";
-// import UploadModal from "./UploadModal";
 
 function SecondModal() {
   const profileDetails = useSelector((state) => state.profile.profilename);
@@ -83,10 +82,8 @@ function SecondModal() {
             </span>
           </div>
         </Modal.Body>
-        <Modal.Body className="second-modal-button">
-          <div className="btn">Use camera</div>
-          {/* <UploadModal /> */}
-          <form onSubmit={uploadImage} className="btn">
+        <Modal.Body>
+          <form onSubmit={uploadImage}>
             <input
               type="file"
               onChange={(e) => setShowImage(e.target.files[0])}
@@ -95,9 +92,9 @@ function SecondModal() {
               variant="primary"
               onClick={handleClose2}
               type="submit"
-              className="float-right"
+              className="btn-3"
             >
-              Post Image
+              Upload photo
             </Button>
           </form>
         </Modal.Body>

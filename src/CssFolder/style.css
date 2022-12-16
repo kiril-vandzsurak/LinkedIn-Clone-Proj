@@ -691,3 +691,7 @@ h3 {
   gap: 5px;
   text-align: center;
 }
+.upload-modal {
+  display: flex;
+  justify-content: space-between;
+}
