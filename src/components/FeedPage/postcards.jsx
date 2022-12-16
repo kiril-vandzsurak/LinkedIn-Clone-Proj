@@ -74,12 +74,17 @@ const Postcard = (props) => {
               </div>
             </div>
           </Row>
-          <div id="date" className="mt-3 text-muted">Posted on: {formatDate(props.data.createdAt)}</div>
+          <div id="date" className="mt-3 text-muted">
+            Posted on: {formatDate(props.data.createdAt)}
+          </div>
           <div className="mt-2">
             <p>{props.data.text}</p>
             <Row className="justify-content-center">
               <span>
-                <img src="image3.jpg" className="comment-image img-fluid" />
+                <img
+                  src={props.data.image ? props.data.image : "https://picsum.photos/400/400"}
+                  className="comment-image img-fluid"
+                />
               </span>
             </Row>
           </div>
