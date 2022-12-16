@@ -72,42 +72,88 @@ const NavbarLinked = () => {
                 onClick={handleClick}
               />
             </InputGroup>
+            {showRes && (
+              <div className="ml-2">
+                <div
+                  style={{
+                    width: "480px",
+                    height: "260px",
+                    border: "1px solid black",
+                    borderRadius: "4px",
+                    overflow: "auto",
+                    top: "48px",
+                    backgroundColor: "white",
+                  }}
+                  className="d-flex flex-column align-items-start position-absolute search"
+                >
+                  <p style={{ marginLeft: "20px", marginTop: "10px" }}>
+                    Try searching for
+                  </p>
+                  {profiles
+                    .filter((n) => n.name.toLowerCase().includes(searchQuery))
+                    .map((elements) => (
+                      <EachProfile
+                        style={{
+                          marginLeft: "20px",
+                          fontWeight: "bold",
+                        }}
+                        profile={elements}
+                      />
+                    ))}
+                </div>
+              </div>
+            )}
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="#home" className="d-flex flex-column">
+              <Nav.Link
+                href="#home"
+                className="d-flex flex-column align-items-center"
+              >
                 <div>
                   <AiFillHome style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>Home</div>
               </Nav.Link>
-              <Nav.Link href="#myNetwork" className="d-flex flex-column">
+              <Nav.Link
+                href="#myNetwork"
+                className="d-flex flex-column align-items-center"
+              >
                 <div>
                   <RiGroupFill style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>My Network</div>
               </Nav.Link>
-              <Nav.Link href="#jobs" className="d-flex flex-column">
+              <Nav.Link
+                href="#jobs"
+                className="d-flex flex-column align-items-center"
+              >
                 <div>
                   <BsFillBriefcaseFill style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>Jobs</div>
               </Nav.Link>
-              <Nav.Link href="#messaging" className="d-flex flex-column">
+              <Nav.Link
+                href="#messaging"
+                className="d-flex flex-column align-items-center"
+              >
                 <div>
                   <RiMessage2Fill style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>Messaging</div>
               </Nav.Link>
-              <Nav.Link href="#notifications" className="d-flex flex-column">
+              <Nav.Link
+                href="#notifications"
+                className="d-flex flex-column align-items-center"
+              >
                 <div>
                   <RiNotification3Fill style={{ fontSize: "20px" }} />
                 </div>
                 <div style={{ fontSize: "13px" }}>Notifications</div>
               </Nav.Link>
 
-              <div className="d-flex flex-column">
+              <div className="d-flex flex-column align-items-center">
                 <img
                   src=""
                   alt="..."
@@ -141,39 +187,6 @@ const NavbarLinked = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      {showRes && (
-        <div className="ml-2">
-          <div
-            style={{
-              width: "480px",
-              height: "260px",
-              border: "1px solid black",
-              marginLeft: "10px",
-              borderRadius: "4px",
-              overflow: "auto",
-              top: "4px",
-              left: "121px",
-            }}
-            className="d-flex flex-column align-items-start position-relative search"
-          >
-            <p style={{ marginLeft: "20px", marginTop: "10px" }}>
-              Try searching for
-            </p>
-            {profiles
-              .filter((n) => n.name.toLowerCase().includes(searchQuery))
-              .map((elements) => (
-                <EachProfile
-                  style={{
-                    marginLeft: "20px",
-                    fontWeight: "bold",
-                  }}
-                  profile={elements}
-                />
-              ))}
-          </div>
-        </div>
-      )}
     </>
   );
 };
