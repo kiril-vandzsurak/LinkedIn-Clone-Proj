@@ -470,3 +470,14 @@ a:hover {
   padding-bottom: 0.2rem;
   border-bottom: 1px solid darkgray;
 }
+
+.contact:hover{
+  cursor: pointer;
+}
+
+#up-btn{
+  border: none;
+  color: rgb(8, 117, 243);
+  background: none;
+  font-size: 2em;
+}
