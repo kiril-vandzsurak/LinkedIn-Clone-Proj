@@ -423,8 +423,8 @@ a:hover {
 }
 
 .comment-image {
-  width: 420px;
-  height: 200px;
+  width: 25rem;
+  height: 15rem;
   object-fit: cover;
 }
 

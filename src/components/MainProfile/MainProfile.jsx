@@ -46,9 +46,9 @@ export default function MainProfile() {
                   </h4>
 
                   <p className="mb-0">{profileDetails.title}</p>
-                  <p className="mb-0">Sytems & Networks</p>
+                  <p className="mb-0">{profileDetails.bio}</p>
                   <p className="mb-0">
-                    {profileDetails.area}.<a href="#">Contact Info</a>
+                    {profileDetails.area} | <a href="#">Contact Info</a>
                   </p>
                   <p className="mb-0">
                     <a href="#">30 connections</a>
