@@ -19,6 +19,10 @@ export const getPostsAction = () => {
   };
   return async (dispatch) => {
     try {
+      dispatch({
+        type: "LOADING",
+        payload: true
+      })
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/posts/",
         options
@@ -29,6 +33,12 @@ export const getPostsAction = () => {
           type: GET_POST_DATA,
           payload: fetchedData.reverse(),
         });
+        setTimeout(() => {
+          dispatch({
+            type: "LOADING",
+            payload: false
+          }, 300)
+        })
         console.log(fetchedData);
       } else {
         console.log("There was an error fetching posts");
