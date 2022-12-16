@@ -5,8 +5,6 @@ import {
   Container,
   InputGroup,
   Form,
-  Row,
-  Col,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BsLinkedin, BsFillBriefcaseFill } from "react-icons/bs";
@@ -19,8 +17,8 @@ import {
 // import img from "./avatar-1.jpg";
 import { useEffect, useState } from "react";
 import EachProfile from "./EachProfile";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const NavbarLinked = () => {
   const [profiles, setProfiles] = useState([]);
@@ -61,7 +59,11 @@ const NavbarLinked = () => {
 
   return (
     <>
-      <Navbar bg="light" expand="lg" style={{ padding: "0px", height: "48px" }}>
+      <Navbar
+        bg="light"
+        expand="lg"
+        style={{ padding: "0px", height: "48px", zIndex: "20" }}
+      >
         <Container>
           <Link to="/">
             <div>
@@ -81,68 +83,105 @@ const NavbarLinked = () => {
                 onClick={handleClick}
               />
             </InputGroup>
+            {showRes && (
+              <div className="ml-2">
+                <div
+                  style={{
+                    width: "480px",
+                    height: "260px",
+                    border: "1px solid black",
+                    borderRadius: "4px",
+                    overflow: "auto",
+                    top: "48px",
+                    backgroundColor: "white",
+                  }}
+                  className="d-flex flex-column align-items-start position-absolute search"
+                >
+                  <p style={{ marginLeft: "20px", marginTop: "10px" }}>
+                    Try searching for
+                  </p>
+                  {profiles
+                    .filter((n) => n.name.toLowerCase().includes(searchQuery))
+                    .map((elements) => (
+                      <EachProfile
+                        style={{
+                          marginLeft: "20px",
+                          fontWeight: "bold",
+                          zIndex: "20",
+                        }}
+                        profile={elements}
+                      />
+                    ))}
+                </div>
+              </div>
+            )}
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Row>
-                <Col>
-                  <Nav.Link href="#home" className="d-flex flex-column">
-                    <div>
-                      <AiFillHome style={{ fontSize: "20px" }} />
-                    </div>
-                    <div style={{ fontSize: "13px" }}>Home</div>
-                  </Nav.Link>
-                </Col>
-                <Nav.Link href="#myNetwork" className="d-flex flex-column">
-                  <div>
-                    <RiGroupFill style={{ fontSize: "20px" }} />
-                  </div>
-                  <div style={{ fontSize: "13px" }}>My Network</div>
-                </Nav.Link>
-                <Nav.Link href="#jobs" className="d-flex flex-column">
-                  <div>
-                    <BsFillBriefcaseFill style={{ fontSize: "20px" }} />
-                  </div>
-                  <div style={{ fontSize: "13px" }}>Jobs</div>
-                </Nav.Link>
-                <Nav.Link href="#messaging" className="d-flex flex-column">
-                  <div>
-                    <RiMessage2Fill style={{ fontSize: "20px" }} />
-                  </div>
-                  <div style={{ fontSize: "13px" }}>Messaging</div>
-                </Nav.Link>
-                <Nav.Link href="#notifications" className="d-flex flex-column">
-                  <div>
-                    <RiNotification3Fill style={{ fontSize: "20px" }} />
-                  </div>
-                  <div style={{ fontSize: "13px" }}>Notifications</div>
-                </Nav.Link>
-              </Row>
+              <Nav.Link
+                href="#home"
+                className="d-flex flex-column align-items-center"
+              >
+                <div>
+                  <AiFillHome style={{ fontSize: "20px" }} />
+                </div>
+                <div style={{ fontSize: "13px" }}>Home</div>
+              </Nav.Link>
+              <Nav.Link
+                href="#myNetwork"
+                className="d-flex flex-column align-items-center"
+              >
+                <div>
+                  <RiGroupFill style={{ fontSize: "20px" }} />
+                </div>
+                <div style={{ fontSize: "13px" }}>My Network</div>
+              </Nav.Link>
+              <Nav.Link
+                href="#jobs"
+                className="d-flex flex-column align-items-center"
+              >
+                <div>
+                  <BsFillBriefcaseFill style={{ fontSize: "20px" }} />
+                </div>
+                <div style={{ fontSize: "13px" }}>Jobs</div>
+              </Nav.Link>
+              <Nav.Link
+                href="#messaging"
+                className="d-flex flex-column align-items-center"
+              >
+                <div>
+                  <RiMessage2Fill style={{ fontSize: "20px" }} />
+                </div>
+                <div style={{ fontSize: "13px" }}>Messaging</div>
+              </Nav.Link>
+              <Nav.Link
+                href="#notifications"
+                className="d-flex flex-column align-items-center"
+              >
+                <div>
+                  <RiNotification3Fill style={{ fontSize: "20px" }} />
+                </div>
+                <div style={{ fontSize: "13px" }}>Notifications</div>
+              </Nav.Link>
 
-              <div className="d-flex flex-column ml-2">
+              <div className="d-flex flex-column align-items-center">
                 <img
-                  src={user ? user.image : ""}
+                  src={user.image}
                   alt="..."
                   style={{
                     width: "22px",
                     height: "22px",
                     borderRadius: "50%",
                     marginTop: "11px",
-                    position: "absolute",
-                    left: "94.8rem",
+                    padding: "0",
                   }}
                   className="align-self-center"
                 />
-
                 <NavDropdown
                   title="Me"
                   id="basic-nav-dropdown"
-                  style={{
-                    fontSize: "13px",
-                    position: "absolute",
-                    bottom: "-6px",
-                  }}
+                  style={{ fontSize: "13px" }}
                 >
                   <NavDropdown.Item>
                     <Link to="/profile/me">My Profile</Link>
@@ -153,40 +192,6 @@ const NavbarLinked = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      {showRes && (
-        <div className="ml-2">
-          <div
-            style={{
-              width: "480px",
-              height: "260px",
-              border: "1px solid black",
-              marginLeft: "10px",
-              borderRadius: "4px",
-              overflow: "auto",
-              top: "4px",
-              left: "121px",
-              zIndex: "20"
-            }}
-            className="d-flex flex-column align-items-start position-relative search"
-          >
-            <p style={{ marginLeft: "20px", marginTop: "10px" }}>
-              Try searching for
-            </p>
-            {profiles
-              .filter((n) => n.name.toLowerCase().includes(searchQuery))
-              .map((elements) => (
-                <EachProfile
-                  style={{
-                    marginLeft: "20px",
-                    fontWeight: "bold",
-                  }}
-                  profile={elements}
-                />
-              ))}
-          </div>
-        </div>
-      )}
     </>
   );
 };
