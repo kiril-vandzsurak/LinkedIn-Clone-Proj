@@ -129,11 +129,8 @@ const AddingPost = () => {
               <Button
                 className="btn-1"
                 onClick={(e) => {
-<<<<<<< HEAD
-=======
-                  alert("Post successfully added")
+                  alert("Post successfully added");
                   handleSubmit(e);
->>>>>>> 715bc51823335c24cae73fe10bcf7611e1b7a5e4
                   handleClose();
                   handleSubmit(e);
                 }}
