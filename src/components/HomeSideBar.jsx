@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import "../CssFolder/homepage.css"
+import "../CssFolder/homepage.css";
 import { getProfile } from "../components/redux/actions";
 import { GiGoldBar } from "react-icons/gi";
 import { RiBookmarkFill } from "react-icons/ri";
@@ -19,11 +19,13 @@ export default function MainPageProfile() {
     <>
       <Card className="profile-card-container">
         <div className="homepage-profile">
-          <img
-            src={profileDetails.image}
-            alt="profileimage"
-            className="homepage-pic"
-          />
+          <Link to="/profile/me" className="name-link">
+            <img
+              src={profileDetails.image}
+              alt="profileimage"
+              className="homepage-pic"
+            />
+          </Link>
         </div>
         <Card.Body>
           <div className="text-center mt-2">
