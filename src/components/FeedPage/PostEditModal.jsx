@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button, Form } from "react-bootstrap";
 import { editPostAction } from "../redux/actions";
 
@@ -25,6 +25,35 @@ const PostEditModal = (props) => {
     e.preventDefault();
     dispatch(editPostAction(postid, changedPost));
   };
+  const [image, setImage] = useState(null);
+  const postImage = async (e) => {
+    const postimage = new FormData();
+
+    postimage.append("post", image);
+
+    const options = {
+      method: "POST",
+      body: postimage,
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+      },
+    };
+
+    try {
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postid}`,
+        options
+      );
+      if (response.ok) {
+        console.log(response);
+        window.location.reload();
+        alert("Image Uploaded Successfully");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -44,6 +73,7 @@ const PostEditModal = (props) => {
             onSubmit={(e) => {
               onSubmitHandler(e);
               props.close();
+              postImage();
             }}
           >
             <Form.Group controlId="formBasicEmail">
@@ -54,6 +84,7 @@ const PostEditModal = (props) => {
                 onChange={(e) => onChangeHandler(e.target.value, setText)}
               />
             </Form.Group>
+            <input type="file" onChange={(e) => setImage(e.target.files[0])} />
             <Button variant="secondary" onClick={props.close}>
               Close
             </Button>
