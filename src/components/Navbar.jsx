@@ -30,18 +30,10 @@ const NavbarLinked = () => {
     saveData();
   }, []);
 
-  const headers = {
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MDFiNGM5NmRmYjAwMTUyMWE1YzYiLCJpYXQiOjE2NzA4NDA3NTcsImV4cCI6MTY3MjA1MDM1N30.T5hB8KIIR6yohMzGajhbb-YdZ8l99w7-m-ASjfU4Jyc",
-    },
-  };
-
   const saveData = async () => {
     try {
       const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/",
-        headers
+        "http://localhost:3002/users/"
       );
       if (response.ok) {
         let data = await response.json();
