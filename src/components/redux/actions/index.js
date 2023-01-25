@@ -162,7 +162,7 @@ export const getOtherProfile = (userid) => {
   return async (dispatch, getState) => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" + userid,
+        "http://localhost:3002/users/" + userid,
         options
       );
       if (response.ok) {
@@ -185,7 +185,7 @@ export const getExperienceAction = (userid) => {
   return async (dispatch, getState) => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" +
+        `http://localhost:3002/users/` +
           userid +
           "/experiences/",
         options
