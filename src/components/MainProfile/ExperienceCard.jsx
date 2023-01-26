@@ -13,6 +13,8 @@ const ExperienceCard = (props) => {
   const userID = user._id;
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState(false)
+  console.log("This is the userid we want to try and delete", userID)
+  console.log("This is the user", user)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

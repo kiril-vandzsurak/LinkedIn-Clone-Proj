@@ -12,7 +12,7 @@ import { BiPencil, BiBuildings } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getExperienceActionOther, getExperienceOtherAction } from "../redux/actions";
+import { getExperienceOtherAction } from "../redux/actions";
 import { postExperienceAction } from "../redux/actions";
 import ExperienceCard from "./ExperienceCard";
 

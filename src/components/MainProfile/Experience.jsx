@@ -24,8 +24,7 @@ export default function Experience() {
   const user = useSelector((state) => state.profile.profilename);
   const userID = user._id;
   const experiences = useSelector((state) => state.profile.experience);
-  console.log(experiences.experiences, typeof experiences);
-  console.log(experiences, typeof experiences);
+  console.log(user, userID, typeof userID);
 
   useEffect(
     () => {
