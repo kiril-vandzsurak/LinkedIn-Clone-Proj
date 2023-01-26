@@ -42,25 +42,28 @@ export const getPostsAction = () => {
   };
 };
 
-export const updateProfile = (changeVaules) => {
-  const option = {
-    method: "PUT",
-    body: JSON.stringify(changeVaules),
+export const updateProfile = (userId, changeVaules) => {
+  // const option = {
+  //   method: "PUT",
+  //   body: JSON.stringify(changeVaules),
 
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
-      "Content-Type": "application/json",
-    },
-  };
+  //   headers: {
+  //     Authorization:
+  //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
+  //     "Content-Type": "application/json",
+  //   },
+  // };
   return async (dispatch) => {
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile",
-        option
-      );
+      let response = await fetch(`${beUrl}+"user/"+${userId}`);
       if (response.ok) {
         console.log(response);
+        let fetchedData = await response.json();
+        dispatch({
+          type: GET_POST_DATA,
+          payload: fetchedData,
+        });
+        console.log(fetchedData);
       } else {
         console.log("error");
       }
@@ -158,7 +161,7 @@ export const getProfile = () => {
 export const getOtherProfile = (userid) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch(`${beUrl}/users/` + userid, options);
+      let response = await fetch(`${beUrl}/users/` + userid);
       if (response.ok) {
         const fetchedData = await response.json();
         console.log(fetchedData);

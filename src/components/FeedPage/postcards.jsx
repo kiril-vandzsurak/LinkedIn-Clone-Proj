@@ -30,7 +30,14 @@ const Postcard = (props) => {
   const user = useSelector((state) => state.profile.profilename);
   const userID = user._id;
   const formatDate = (d) => new Date(d).toISOString().substring(0, 10);
-  console.log("These are the props", props, "These are the props data user", props.data.username, "This is supposed to be the user", user)
+  console.log(
+    "These are the props",
+    props,
+    "These are the props data user",
+    props.data.username,
+    "This is supposed to be the user",
+    user
+  );
   if (props.data.username !== null) {
     return (
       <>
@@ -39,7 +46,7 @@ const Postcard = (props) => {
             <div className="d-flex">
               <div className="comment-img-con">
                 <img
-                  src={props.data.image ? props.data.image : ""}
+                  src={props.data.user.image ? props.data.user.image : ""}
                   alt="user"
                 />
               </div>
@@ -51,14 +58,14 @@ const Postcard = (props) => {
                       className="font-weight-bold"
                     >
                       <Link to={"/profile/" + props.data._id}>
-                        {props.data.username} {props.data.username}
+                        {props.data.user.name} {props.data.user.surname}
                       </Link>
                     </span>
                   </div>
                   <div className="comment-subheader">
-                    <span style={{ fontSize: "0.7rem" }}>
-                      {props.data.text}
-                    </span>
+                    {/* <span style={{ fontSize: "0.7rem" }}>
+                      {props.data.user.username}
+                    </span> */}
                   </div>
                 </Row>
               </Col>
