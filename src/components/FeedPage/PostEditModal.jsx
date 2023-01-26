@@ -8,7 +8,7 @@ const PostEditModal = (props) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const postid = props.post._id;
-
+  const beUrl = process.env.REACT_APP_BE_URL;
   const changedPost = {
     text: text,
   };
@@ -41,10 +41,7 @@ const PostEditModal = (props) => {
     };
 
     try {
-      let response = await fetch(
-        `http://localhost:3002/posts/${postid}`,
-        options
-      );
+      let response = await fetch(`${beUrl}/posts/${postid}`, options);
       if (response.ok) {
         console.log(response);
         dispatch(getPostsAction());

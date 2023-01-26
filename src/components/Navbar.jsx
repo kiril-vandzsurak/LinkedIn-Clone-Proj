@@ -25,16 +25,14 @@ const NavbarLinked = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showRes, setShowRes] = useState(false);
   const user = useSelector((state) => state.profile.profilename);
-
+  const beUrl = process.env.REACT_APP_BE_URL;
   useEffect(() => {
     saveData();
   }, []);
 
   const saveData = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:3002/users/"
-      );
+      const response = await fetch(`${beUrl}/users/`);
       if (response.ok) {
         let data = await response.json();
         setProfiles(data);

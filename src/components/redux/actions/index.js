@@ -8,31 +8,30 @@ export const EDIT_PROFILE = "EDIT_PROFILE";
 export const GET_POST_DATA = "GET_POST_DATA";
 export const GET_EXPERIENCE_DETAILS_OTHER = "GET_EXPERIENCE_DETAILS_OTHER";
 export const MAKE_POST = "MAKE_POST";
+const beUrl = process.env.REACT_APP_BE_URL;
 
 export const getPostsAction = () => {
-  console.log('getPostsAction is called')
+  console.log("get posts action fired");
   return async (dispatch) => {
     try {
       dispatch({
         type: "LOADING",
-        payload: true
-      })
-      let response = await fetch(
-        "http://localhost:3002/posts/",
-      );
-      console.log("This is the response", response)
+        payload: true,
+      });
+      let response = await fetch(`${beUrl}/posts/`);
+      console.log("This is the response", response);
       let fetchedData = await response.json();
       if (response.ok) {
         dispatch({
           type: GET_POST_DATA,
-          payload: fetchedData
+          payload: fetchedData,
         });
         setTimeout(() => {
           dispatch({
-              type: "LOADING",
-              payload: false
-          })
-      }, 300)
+            type: "LOADING",
+            payload: false,
+          });
+        }, 300);
         console.log(fetchedData);
       } else {
         console.log("There was an error fetching posts");
@@ -139,9 +138,7 @@ const options = {
 export const getProfile = () => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch(
-        "http://localhost:3002/users/63d0ead852fdda0791edb93d/"
-      );
+      let response = await fetch(`${beUrl}/users/63d0ead852fdda0791edb93d/`);
       if (response.ok) {
         const fetchedData = await response.json();
         console.log(fetchedData);
@@ -161,10 +158,7 @@ export const getProfile = () => {
 export const getOtherProfile = (userid) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch(
-        "http://localhost:3002/users/" + userid,
-        options
-      );
+      let response = await fetch(`${beUrl}/users/` + userid, options);
       if (response.ok) {
         const fetchedData = await response.json();
         console.log(fetchedData);
@@ -175,7 +169,7 @@ export const getOtherProfile = (userid) => {
       } else {
         console.log("error");
       }
-    } catch (erro) {
+    } catch (error) {
       console.log("woohs nothing is found");
     }
   };
@@ -185,9 +179,7 @@ export const getExperienceAction = (userid) => {
   return async (dispatch, getState) => {
     try {
       let response = await fetch(
-        `http://localhost:3002/users/` +
-          userid +
-          "/experiences/",
+        `${beUrl}/users/` + userid + "/experiences/",
         options
       );
       if (response.ok) {
@@ -346,21 +338,9 @@ export const editExperienceAction = (postid, userid, data) => {
 };
 
 export const makePostAction = (data, userid) => {
-  const options = {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2Zjk2NGM5NmRmYjAwMTUyMWE1YzAiLCJpYXQiOjE2NzA4Mzg2MjgsImV4cCI6MTY3MjA0ODIyOH0.S8B9Q1xNG-Qhgqc_VaASpoD_zvjiPjV0ZU2__qRPBEI",
-      "Content-Type": "application/json",
-    },
-  };
   return async (dispatch, useState) => {
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/",
-        options
-      );
+      let response = await fetch(`${beUrl}/posts/`);
       if (response.ok) {
         dispatch(getPostsAction());
         console.log("Posted Successfully!");

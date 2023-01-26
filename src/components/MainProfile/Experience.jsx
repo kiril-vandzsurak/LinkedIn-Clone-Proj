@@ -25,6 +25,7 @@ export default function Experience() {
   const userID = user._id;
   const experiences = useSelector((state) => state.profile.experience);
   console.log(experiences.experiences, typeof experiences);
+  console.log(experiences, typeof experiences);
 
   useEffect(
     () => {
@@ -84,8 +85,8 @@ export default function Experience() {
 
             <Container fluid>
               <ListGroup variant="flush">
-                {experiences.experiences &&
-                  experiences.experiences.map((i) => (
+                {experiences &&
+                  experiences.map((i) => (
                     <ExperienceCard data={i} id={i._id} key={i._id} />
                   ))}
               </ListGroup>

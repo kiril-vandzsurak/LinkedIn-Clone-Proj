@@ -15,16 +15,16 @@ const ShowPosts = () => {
   }, []);
 
   const posts = useSelector((state) => state.posts.posts.posts);
-console.log("These are the posts:", posts);
+  //console.log("These are the posts:", posts);
   const loading = useSelector((state) => state.loading.loading);
 
-  const[numToShow, setNumToShow] = useState(5)
-  console.log("These are the posts", posts)
+  const [numToShow, setNumToShow] = useState(5);
+  //console.log("These are the posts", posts);
 
   const showMorePosts = (e) => {
-    const num = 10
-    setNumToShow(numToShow + num)
-  }
+    const num = 10;
+    setNumToShow(numToShow + num);
+  };
 
   /* 
     useEffect(() => {
@@ -44,10 +44,13 @@ console.log("These are the posts:", posts);
             <Spinner animation="border" />
           </Row>
         )} */}
-        {posts &&
-          posts.map((i) => <Postcard data={i} key={i._id} />)}
+        {posts && posts.map((i) => <Postcard data={i} key={i._id} />)}
 
-          <Row className="justify-content-center"><Button onClick={showMorePosts} variant="outline-primary">Show More</Button></Row>
+        <Row className="justify-content-center">
+          <Button onClick={showMorePosts} variant="outline-primary">
+            Show More
+          </Button>
+        </Row>
       </div>
     </>
   );
