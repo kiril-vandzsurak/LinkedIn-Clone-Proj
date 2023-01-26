@@ -12,7 +12,7 @@ const EachProfile = ({ profile }) => {
         <Row>
           <Col className="my-2" style={{ fontWeight: "bold" }}>
             <BiSearch className="mr-4" />
-            <Link to={"/profile/" + profile._id}>{profile.name} {profile.surname}</Link>
+            <Link to={"/profile/" + profile._id}>{profile.name} {" "} {profile.surname}</Link>
           </Col>
         </Row>
       </Container>

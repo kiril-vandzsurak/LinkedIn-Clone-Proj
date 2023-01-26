@@ -42,7 +42,7 @@ const PostEditModal = (props) => {
 
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postid}`,
+        `http://localhost:3002/posts/${postid}`,
         options
       );
       if (response.ok) {

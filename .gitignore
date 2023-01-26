@@ -5,6 +5,7 @@
 /mainfeed-post
 /.pnp
 .pnp.js
+/mainfeed-post
 
 # testing
 /coverage

@@ -41,7 +41,7 @@ export default function MainProfile() {
               <div className="profile-name d-flex">
                 <div className="profile-details">
                   <h4 className="mb-0">
-                    {profileDetails.name}
+                    {profileDetails.name} {" "}
                     {profileDetails.surname}
                   </h4>
 

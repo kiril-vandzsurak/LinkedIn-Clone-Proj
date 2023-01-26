@@ -13,6 +13,7 @@ import Interest from "./Interests";
 import ModalComponent from "./ModalComponent";
 import JobPreferencesModal from "./JobPreferencesModal";
 import { useParams } from "react-router-dom";
+import profileMeButtons from "./ProfileMeButtons";
 
 export default function MainProfileUser() {
   const params = useParams();
@@ -38,7 +39,7 @@ export default function MainProfileUser() {
               <div className="profile-picture">
                 <img src={profileDetails.image} alt="profilepicture" />
                 <div>
-                  <ModalComponent />
+                  {userid === "63d0ead852fdda0791edb93d" ? <ModalComponent /> : ""}
                 </div>
               </div>
               <div className="profile-name d-flex">
@@ -56,11 +57,8 @@ export default function MainProfileUser() {
                   <p className="mb-0">
                     <a href="#">30 connections</a>
                   </p>
-
-                  <div className="profile-buttons">
-                    <Button className="btn-1">Open to</Button>
-                    <Button className="btn-2">Add profile Section</Button>
-                    <Button className="btn-3">more</Button>
+                  <div>
+                  <profileMeButtons />
                   </div>
                   <JobPreferencesModal />
                 </div>

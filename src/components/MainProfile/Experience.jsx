@@ -24,13 +24,11 @@ export default function Experience() {
   const user = useSelector((state) => state.profile.profilename);
   const userID = user._id;
   const experiences = useSelector((state) => state.profile.experience);
+  console.log(experiences.experiences, typeof experiences);
 
   useEffect(
     () => {
       dispatch(getExperienceAction(userID));
-      setTimeout(() => {
-        setToShow(true);
-      }, 300);
     },
     [userID],
     [experiences]
@@ -86,8 +84,8 @@ export default function Experience() {
 
             <Container fluid>
               <ListGroup variant="flush">
-                {experiences &&
-                  experiences.map((i) => (
+                {experiences.experiences &&
+                  experiences.experiences.map((i) => (
                     <ExperienceCard data={i} id={i._id} key={i._id} />
                   ))}
               </ListGroup>
