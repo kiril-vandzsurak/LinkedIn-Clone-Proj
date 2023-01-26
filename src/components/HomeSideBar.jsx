@@ -31,7 +31,7 @@ export default function MainPageProfile() {
           <div className="text-center mt-2">
             <Link to="/profile/me" className="name-link">
               <h3 className="homeprofile-name mb-1">
-                {profileDetails.name}
+                {profileDetails.name} {" "}
                 {profileDetails.surname}
               </h3>
             </Link>
