@@ -44,7 +44,6 @@ export default function MainProfile() {
                     {profileDetails.name} {" "}
                     {profileDetails.surname}
                   </h4>
-
                   <p className="mb-0">{profileDetails.title}</p>
                   <p className="mb-0">{profileDetails.bio}</p>
                   <p className="mb-0">

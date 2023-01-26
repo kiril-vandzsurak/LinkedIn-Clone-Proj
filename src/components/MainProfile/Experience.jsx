@@ -84,6 +84,12 @@ export default function Experience() {
 
             <Container fluid>
               <ListGroup variant="flush">
+                <div className="d-flex ml-3">
+              <a href={process.env.REACT_APP_BE_URL + "/users/" + userID + "/printCV"} target="_blank" rel="noreferrer">
+    <Button>Download CV</Button></a>
+              <a href={process.env.REACT_APP_BE_URL + "/files/" + userID + "/experiences/downloadCSV"} target="_blank" rel="noreferrer">
+    <Button>Download list of experiences</Button></a>
+    </div>
                 {experiences &&
                   experiences.map((i) => (
                     <ExperienceCard data={i} id={i._id} key={i._id} />
