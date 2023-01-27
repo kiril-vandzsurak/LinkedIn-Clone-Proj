@@ -13,8 +13,7 @@ const ExperienceCard = (props) => {
   const userID = user._id;
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState(false)
-  console.log("This is the userid we want to try and delete", userID)
-  console.log("This is the user", user)
+  const experiences = useSelector((state) => state.profile.experience);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,6 +22,7 @@ const ExperienceCard = (props) => {
   const showModal = () => setModal(true)
 
   const [details, setDetails] = useState([]);
+  console.log("This is the userID", userID);
 
   const formatDate = (d) => new Date(d).toISOString().substring(0, 10);
 
@@ -58,7 +58,7 @@ const ExperienceCard = (props) => {
             <p>{props.data.description}</p>
           </Card.Body>
           <Card.Footer>
-            {user.username === props.data.username ? (
+            {user.username ? (
               <Button
                 variant="danger"
                 onClick={() => {

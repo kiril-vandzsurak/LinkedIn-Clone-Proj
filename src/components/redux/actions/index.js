@@ -8,6 +8,7 @@ export const EDIT_PROFILE = "EDIT_PROFILE";
 export const GET_POST_DATA = "GET_POST_DATA";
 export const GET_EXPERIENCE_DETAILS_OTHER = "GET_EXPERIENCE_DETAILS_OTHER";
 export const MAKE_POST = "MAKE_POST";
+export const DELETE_DATA = "DELETE_DATA";
 const beUrl = process.env.REACT_APP_BE_URL;
 
 export const getPostsAction = () => {
@@ -247,13 +248,18 @@ export const postExperienceAction = (experience, userid) => {
 };
 
 export const deleteExperienceAction = (experienceid, userid) => {
+  const deleteOptions = {
+    method: "DELETE"
+  }
   return async (dispatch) => {
     try {
-      let response = await fetch(
-        `${beUrl}/user/` + userid + "/experiences/" + experienceid
-      );
+      let response = await fetch(`${beUrl}/users/` + userid + "/experiences/" + experienceid, deleteOptions);
+      let fetchedData = await response.json();
       if (response.ok) {
-        // dispatch(getExperienceAction(userid));
+        dispatch ({
+          type: DELETE_DATA,
+          payload: fetchedData
+        })
         console.log("Deleted successfully!");
       } else {
         console.log("Could not delete");

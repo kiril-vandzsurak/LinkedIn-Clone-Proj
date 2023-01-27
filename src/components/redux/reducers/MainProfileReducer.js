@@ -4,13 +4,15 @@ import { EXP_TO_EDIT } from "../actions";
 import { OTHER_USER_DETAILS } from "../actions";
 import { EDIT_PROFILE } from "../actions";
 import { GET_EXPERIENCE_DETAILS_OTHER } from "../actions";
+import { DELETE_DATA } from "../actions";
 
 const initialstate = {
   profilename: [],
   experience: [],
   toEdit: [],
   otherUser: [],
-  otherExperience: []
+  otherExperience: [],
+  deleteExperience: ""
 };
 
 const profileReducer = (state = initialstate, action) => {
@@ -45,6 +47,11 @@ const profileReducer = (state = initialstate, action) => {
         ...state,
         profilename: action.payload,
       };
+    }
+    case DELETE_DATA: 
+    return {
+      ...state,
+      deleteExperience: action.payload
     }
 
     default:
