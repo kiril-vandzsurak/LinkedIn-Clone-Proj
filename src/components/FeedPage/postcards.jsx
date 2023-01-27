@@ -22,7 +22,7 @@ import PostEditModal from "./PostEditModal";
 
 const Postcard = (props) => {
   const [show, setShow] = useState(false);
-
+  console.log(props)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -46,7 +46,7 @@ const Postcard = (props) => {
             <div className="d-flex">
               <div className="comment-img-con">
                 <img
-                  src={props.data.user.image ? props.data.user.image : ""}
+                  src={""}
                   alt="user"
                 />
               </div>
@@ -58,7 +58,7 @@ const Postcard = (props) => {
                       className="font-weight-bold"
                     >
                       <Link to={"/profile/" + props.data._id}>
-                        {props.data.user.name} {props.data.user.surname}
+                        {props.data.username}
                       </Link>
                     </span>
                   </div>

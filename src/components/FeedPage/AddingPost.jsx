@@ -12,6 +12,7 @@ import { FaPoll } from "react-icons/fa";
 import { GiGlassCelebration } from "react-icons/gi";
 import { BsChatText } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { makePostAction } from "../redux/actions";
 
 const AddingPost = () => {
@@ -19,12 +20,17 @@ const AddingPost = () => {
   const userID = user._id;
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-
-  const [post, setPost] = useState("");
+  const post = useSelector((state) => state.profile.profilename)
+  const [localPost, setLocalPost] = useState("");
 
   const postToSend = {
-    text: post,
+    username: post,
+    text: "sometext"
   };
+
+  useEffect(() => {
+    setLocalPost(post);
+  }, [post]);
 
   const onChangeHandler = (value, fieldToSet) => {
     fieldToSet(value);
@@ -34,6 +40,32 @@ const AddingPost = () => {
     e.preventDefault();
     dispatch(makePostAction(postToSend, userID));
   };
+
+  /* 
+  
+  const AddingPost = () => {
+  const user = useSelector((state) => state.profile.profilename);
+  const userID = user._id;
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+
+  const post = useSelector((state) => state.post.text);
+  const [localPost, setLocalPost] = useState(post);
+
+  useEffect(() => {
+    setLocalPost(post);
+  }, [post]);
+
+  const onChangeHandler = (value, fieldToSet) => {
+    fieldToSet(value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(makePostAction(localPost, userID));
+  };
+  
+  */
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -103,7 +135,7 @@ const AddingPost = () => {
                 as="textarea"
                 rows={3}
                 placeholder="What do you want to talk about?"
-                onChange={(e) => onChangeHandler(e.target.value, setPost)}
+                onChange={(e) => onChangeHandler(e.target.value, setLocalPost)}
               />
             </Form.Group>
           </Form>
