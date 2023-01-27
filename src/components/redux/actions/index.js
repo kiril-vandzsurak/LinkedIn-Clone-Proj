@@ -8,7 +8,9 @@ export const EDIT_PROFILE = "EDIT_PROFILE";
 export const GET_POST_DATA = "GET_POST_DATA";
 export const GET_EXPERIENCE_DETAILS_OTHER = "GET_EXPERIENCE_DETAILS_OTHER";
 export const MAKE_POST = "MAKE_POST";
+export const SAVE_POST_TO_DB = "SAVE_POST_TO_DB";
 export const DELETE_DATA = "DELETE_DATA";
+
 const beUrl = process.env.REACT_APP_BE_URL;
 
 export const getPostsAction = () => {
@@ -329,12 +331,21 @@ export const editExperienceAction = (postid, userid, data) => {
 export const makePostAction = (data, userid) => {
   return async (dispatch, useState) => {
     try {
-      let response = await fetch(`${beUrl}/posts/`);
+      const optionsPost = {
+        method: "POST"
+      }
+      let response = await fetch(`${beUrl}/posts/`, optionsPost);
+      console.log(response)
+      let fetchedData = await response.json();
+      console.log("These are the fetcheddata", fetchedData)
       if (response.ok) {
-        dispatch(getPostsAction());
+        dispatch({
+          type: SAVE_POST_TO_DB,
+          payload: fetchedData
+        });
         console.log("Posted Successfully!");
       } else {
-        console.log("Error posting");
+        console.log("Error posting - the response is not ok");
       }
     } catch (err) {
       console.log(err);
