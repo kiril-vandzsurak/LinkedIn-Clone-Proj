@@ -2,7 +2,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import { editExperienceAction, getExperienceAction } from "../redux/actions";
+import { editExperienceAction } from "../redux/actions";
 const EditModal = (props) => {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.profile.toEdit);

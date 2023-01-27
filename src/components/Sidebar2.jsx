@@ -11,7 +11,7 @@ const Sidebar2 = () => {
   const dispatch = useDispatch();
   const people = useSelector((state) => state.people.bottom)
 
-  const endpoint = "http://localhost:3002/users/";
+  const endpoint = process.env.REACT_APP_BE_URL + "/users/";
   
   useEffect(() => {
     dispatch(retrieveDataActionBottom(endpoint));
