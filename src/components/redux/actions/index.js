@@ -8,6 +8,7 @@ export const EDIT_PROFILE = "EDIT_PROFILE";
 export const GET_POST_DATA = "GET_POST_DATA";
 export const GET_EXPERIENCE_DETAILS_OTHER = "GET_EXPERIENCE_DETAILS_OTHER";
 export const MAKE_POST = "MAKE_POST";
+export const SAVE_POST_TO_DB = "SAVE_POST_TO_DB";
 const beUrl = process.env.REACT_APP_BE_URL;
 
 export const getPostsAction = () => {
@@ -386,6 +387,24 @@ export const editPostAction = (postid, data) => {
       }
     } catch (err) {
       console.log(err);
+    }
+  };
+};
+
+export const saveNewPosts = () => {
+  const optionsPost = {
+    method: "POST",
+    // body:
+  };
+  return async (dispatch, getState) => {
+    try {
+      let resp = await fetch(`${beUrl}/posts/`);
+      if (resp.ok) {
+        console.log("Post added successfuly");
+        dispatch({});
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 };
