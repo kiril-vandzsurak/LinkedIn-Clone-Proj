@@ -391,17 +391,24 @@ export const editPostAction = (postid, data) => {
   };
 };
 
-export const saveNewPosts = () => {
+export const saveNewPosts = (data, userid) => {
   const optionsPost = {
     method: "POST",
-    // body:
   };
   return async (dispatch, getState) => {
+    console.log("The action is launched");
     try {
-      let resp = await fetch(`${beUrl}/posts/`);
+      let resp = await fetch(`${beUrl}/posts/`, optionsPost);
+      console.log("this is the response:", resp);
+      let fetchData = await resp.json();
       if (resp.ok) {
+        dispatch({
+          type: SAVE_POST_TO_DB,
+          payload: fetchData,
+        });
         console.log("Post added successfuly");
-        dispatch({});
+      } else {
+        console.log("Something went wrong");
       }
     } catch (error) {
       console.log(error);

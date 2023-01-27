@@ -12,7 +12,7 @@ import { FaPoll } from "react-icons/fa";
 import { GiGlassCelebration } from "react-icons/gi";
 import { BsChatText } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { makePostAction } from "../redux/actions";
+import { saveNewPosts } from "../redux/actions";
 
 const AddingPost = () => {
   const user = useSelector((state) => state.profile.profilename);
@@ -24,7 +24,10 @@ const AddingPost = () => {
 
   const postToSend = {
     text: post,
+    user: userID,
   };
+
+  console.log("it is user id:", userID);
 
   const onChangeHandler = (value, fieldToSet) => {
     fieldToSet(value);
@@ -32,7 +35,7 @@ const AddingPost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(makePostAction(postToSend, userID));
+    dispatch(saveNewPosts(postToSend, userID));
   };
 
   const handleClose = () => setShow(false);
@@ -103,7 +106,9 @@ const AddingPost = () => {
                 as="textarea"
                 rows={3}
                 placeholder="What do you want to talk about?"
-                onChange={(e) => onChangeHandler(e.target.value, setPost)}
+                onChange={(e) => {
+                  onChangeHandler(e.target.value, setPost);
+                }}
               />
             </Form.Group>
           </Form>
